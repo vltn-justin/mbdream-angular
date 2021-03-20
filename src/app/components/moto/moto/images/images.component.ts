@@ -34,14 +34,19 @@ export class ImagesComponent implements OnInit {
    * @param event Event generated when choose an img
    */
   onFileSelected(event): void {
-    this.selectedImg = event.target.files[0];
-    this.texteIMG = this.selectedImg.name;
+    if (event.target.files.length > 0) {
+      this.selectedImg = event.target.files[0];
+      this.texteIMG = this.selectedImg.name;
 
-    const reader = new FileReader();
-    reader.readAsDataURL(this.selectedImg);
-    reader.onload = (ev: any) => {
-      this.url = ev.target.result;
-    };
+      const reader = new FileReader();
+      reader.readAsDataURL(this.selectedImg);
+      reader.onload = (ev: any) => {
+        this.url = ev.target.result;
+      };
+    } else {
+      this.texteIMG = 'Ajoutez une image';
+      this.url = '';
+    }
   }
 
   /**

@@ -1,19 +1,22 @@
 <div id="ajoutImg">
+  <img id="previewIMG" [src]="url" alt="">
+
   <h5>{{texteIMG}}</h5>
 
-  <input #inputFile style="display: none" type="file" (change)="onFileSelected($event)">
-  <button type="button" (click)="inputFile.click()">Ajouter</button>
-  <button type="button" (click)="onUpload()">Upload</button>
+  <div id="btnImg">
+    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event)" accept="image/png, .jpg, .jpeg, .bmp">
+    <button type="button" (click)="inputFile.click()">Ajouter</button>
+    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="selectedImg === undefined">Upload</button>
+  </div>
 </div>
 
-<img [src]="url" alt="" width="200px" height="auto">
-
-<ng-container *ngIf="moto.nbImages > 0 else noImages">
-  <div *ngFor="let img of imageTab">
-    {{img.description}}
-    {{img.lienImage}}
+<div id="imagesMoto" *ngIf="moto.nbImages > 0 else noImages">
+  <div id="oneImgMoto" *ngFor="let img of imageTab">
+    <figure>
+      <img src="{{img.lienImage}}" alt="{{img.description}}">
+    </figure>
   </div>
-</ng-container>
+</div>
 
 <ng-template #noImages>
   Pas d'images pour cette moto

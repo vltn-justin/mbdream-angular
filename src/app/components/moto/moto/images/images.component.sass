@@ -1,0 +1,35 @@
+#ajoutImg
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  #previewIMG
+    width: 300px
+    height: auto
+  #btnImg
+    button
+      padding: 8px 15px
+      margin: 10px
+#imagesMoto
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+  flex-wrap: wrap
+  width: 100%
+  #oneImgMoto
+    max-width: 400px
+    height: auto
+    figure
+      width: 100%
+      height: auto
+      img
+        border-radius: 10px
+        width: 100%
+        height: auto
+        &:hover
+          transition-duration: 2s
+          transform: scale(1.2)
+        &:not(:hover)
+          transition-duration: 2s
+          transform: scale(1)
