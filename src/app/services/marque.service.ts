@@ -8,7 +8,7 @@ import {MarqueModel} from '../models/marque-model';
 })
 export class MarqueService {
 
-  private url = 'https://chamalo-web.ddns.net:16650/marque';
+  private url = 'http://chamalo-web.ddns.net:16650/marque';
 
   constructor(private http: HttpClient) {
   }
