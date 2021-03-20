@@ -103,4 +103,11 @@ export class MotoComponent implements OnInit {
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     this.componentRef = this.container.createComponent(factory);
   }
+
+  /**
+   * Method to get a random number between 0 and number of img, for display in header
+   */
+  randomImg(): number {
+    return Math.floor((Math.random() * this.imageTab.length));
+  }
 }
