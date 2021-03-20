@@ -28,6 +28,7 @@ export class MotoComponent implements OnInit {
   slug: string;
 
   imageTab: ImageModel[];
+  backgroundIMG = '';
 
   tabSelector: string;
 
@@ -89,6 +90,7 @@ export class MotoComponent implements OnInit {
     if (this.moto.nbImages > 0) {
       this.mediaService.getAllImgMoto(this.moto.idMoto).subscribe(res => {
         this.imageTab = res;
+        this.randomImg();
         this.mediaService.saveListImage(this.imageTab);
       });
     }
@@ -107,7 +109,7 @@ export class MotoComponent implements OnInit {
   /**
    * Method to get a random number between 0 and number of img, for display in header
    */
-  randomImg(): number {
-    return Math.floor((Math.random() * this.imageTab.length));
+  randomImg(): void {
+    this.backgroundIMG =  this.imageTab[Math.floor((Math.random() * this.imageTab.length))].lienImage;
   }
 }

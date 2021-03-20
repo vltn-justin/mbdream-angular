@@ -8,12 +8,12 @@
       /
       <a id="categorie" href="/categorie/{{moto?.categorie.slugCategorie}}">{{moto?.categorie.nomCategorie}}</a>
     </span>
-  </div>
 
-  <div id="img">
-    <figure>
-      <img *ngIf="imageTab?.length > 0" src="{{imageTab[randomImg()].lienImage}}" alt="{{moto?.nomMoto}} background">
-    </figure>
+    <div id="imgBackground">
+      <figure>
+        <img *ngIf="imageTab?.length > 0" [src]="backgroundIMG" alt="{{moto?.nomMoto}} background">
+      </figure>
+    </div>
   </div>
 
   <div id="navTabMoto">
