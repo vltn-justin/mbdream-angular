@@ -1,0 +1,10 @@
+<ng-container *ngIf="moto.nbVideos> 0 else noVideos">
+  <div *ngFor="let video of videoTab">
+    <iframe [src]="sanitizeURL(video.lienVideo)" frameborder="0"></iframe>
+    {{video.description}}
+  </div>
+</ng-container>
+
+<ng-template #noVideos>
+  Pas de vidéo pour cette moto
+</ng-template>

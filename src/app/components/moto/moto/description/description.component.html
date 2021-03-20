@@ -1,0 +1,7 @@
+<ng-container *ngIf="moto else noDescription">
+  {{moto.descriptionMoto}}
+</ng-container>
+
+<ng-template #noDescription>
+  Pas de description pour cette moto
+</ng-template>

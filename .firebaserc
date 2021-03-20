@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "motorbike-dream"
+  },
+  "targets": {
+    "motorbike-dream": {
+      "hosting": {
+        "mbdream-angular": [
+          "motorbike-dream"
+        ]
+      }
+    }
+  }
+}

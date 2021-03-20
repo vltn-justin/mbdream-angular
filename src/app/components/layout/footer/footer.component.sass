@@ -1,0 +1,31 @@
+footer
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+  height: 50px
+  width: 100%
+  background-color: #051622
+  color: white
+  #leftSideFooter
+    margin-left: 5px
+  #centerSideFooter
+    margin: 0 auto
+    ul
+      display: flex
+      list-style: none
+      li
+        padding: 0 7px
+        a
+          color: white
+          text-decoration: none
+          transition: border-bottom 1s ease
+          border-bottom: 0 solid #051622
+          &:hover
+            border-bottom: 1px solid white
+  #rightSideFooter
+    margin-right: 5px
+    .socials
+      color: red
+      padding: 0 5px
+      text-decoration: none

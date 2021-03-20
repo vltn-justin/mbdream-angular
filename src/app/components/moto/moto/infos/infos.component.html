@@ -1,0 +1,11 @@
+<ng-container *ngIf="moto.nomMoto === 'zazrezrze' else noInfos">
+  {{moto.descriptionMoto}}
+</ng-container>
+
+<ng-template #noInfos>
+  Pas d'infos pour cette moto
+</ng-template>
+
+<!--
+  Tableau avec infos, moteur, prix, poid, consomation, marque, etc ...
+-->

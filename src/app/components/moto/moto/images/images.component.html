@@ -1,0 +1,20 @@
+<div id="ajoutImg">
+  <h5>{{texteIMG}}</h5>
+
+  <input #inputFile style="display: none" type="file" (change)="onFileSelected($event)">
+  <button type="button" (click)="inputFile.click()">Ajouter</button>
+  <button type="button" (click)="onUpload()">Upload</button>
+</div>
+
+<img [src]="url" alt="" width="200px" height="auto">
+
+<ng-container *ngIf="moto.nbImages > 0 else noImages">
+  <div *ngFor="let img of imageTab">
+    {{img.description}}
+    {{img.lienImage}}
+  </div>
+</ng-container>
+
+<ng-template #noImages>
+  Pas d'images pour cette moto
+</ng-template>

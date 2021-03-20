@@ -1,0 +1,44 @@
+<div id="containerMoto">
+  <!--  moto? to avoid ngIf, make bugs with dynamic container -->
+  <div id="entete">
+    <span id="titre">{{moto?.nomMoto}}</span>
+    <a id="marque" routerLink="/marque/{{moto?.marque.slugMarque}}">{{moto?.marque.nomMarque}}</a>
+  </div>
+
+  <div id="img">
+    <figure>
+      <img *ngIf="imageTab?.length > 0" src="{{imageTab[0].lienImage}}" alt="{{moto?.nomMoto}} background">
+    </figure>
+  </div>
+
+  <div id="navTabMoto">
+    <a class="tab" (click)="tabSelector = 'description'; changeContent();" [ngClass]="{activeTab : tabSelector === 'description'}">
+      <fa-icon [icon]="faDesc"></fa-icon>
+      Description
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'infos'; changeContent();" [ngClass]="{activeTab : tabSelector === 'infos'}">
+      <fa-icon [icon]="faInfo"></fa-icon>
+      Infos
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'images'; changeContent();" [ngClass]="{activeTab : tabSelector === 'images'}">
+      <fa-icon [icon]="faImage"></fa-icon>
+      Images
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'videos'; changeContent();" [ngClass]="{activeTab : tabSelector === 'videos'}">
+      <fa-icon [icon]="faVideo"></fa-icon>
+      Videos
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'comments'; changeContent();" [ngClass]="{activeTab : tabSelector === 'comments'}">
+      <fa-icon [icon]="faComment"></fa-icon>
+      Commentaires
+    </a>
+  </div>
+
+  <div id="contentTabMoto">
+    <ng-template #contentTabMoto></ng-template>
+  </div>
+</div>
