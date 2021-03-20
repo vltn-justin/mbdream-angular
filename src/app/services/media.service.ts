@@ -10,7 +10,7 @@ import {VideoModel} from '../models/video-model';
 export class MediaService {
 
   private imageTab: ImageModel[];
-  private url = 'http://chamalo-web.ddns.net:16650/media';
+  private url = 'https://chamalo-web.ddns.net:16650/media';
 
   constructor(private http: HttpClient) {
   }

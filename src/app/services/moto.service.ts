@@ -9,7 +9,7 @@ import {MotoModel} from '../models/moto-model';
 export class MotoService {
 
   private moto: MotoModel;
-  private url = 'http://chamalo-web.ddns.net:16650/moto';
+  private url = 'https://chamalo-web.ddns.net:16650/moto';
 
   constructor(private http: HttpClient) { }
 
