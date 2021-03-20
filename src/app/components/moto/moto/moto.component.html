@@ -2,12 +2,17 @@
   <!--  moto? to avoid ngIf, make bugs with dynamic container -->
   <div id="entete">
     <span id="titre">{{moto?.nomMoto}}</span>
-    <a id="marque" routerLink="/marque/{{moto?.marque.slugMarque}}">{{moto?.marque.nomMarque}}</a>
+
+    <span id="liensMC">
+      <a id="marque" routerLink="/marque/{{moto?.marque.slugMarque}}">{{moto?.marque.nomMarque}}</a>
+      /
+      <a id="categorie" href="/categorie/{{moto?.categorie.slugCategorie}}">{{moto?.categorie.nomCategorie}}</a>
+    </span>
   </div>
 
   <div id="img">
     <figure>
-      <img *ngIf="imageTab?.length > 0" src="{{imageTab[0].lienImage}}" alt="{{moto?.nomMoto}} background">
+      <img *ngIf="imageTab?.length > 0" src="{{imageTab[randomImg()].lienImage}}" alt="{{moto?.nomMoto}} background">
     </figure>
   </div>
 
