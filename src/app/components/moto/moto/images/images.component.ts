@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
@@ -14,6 +14,7 @@ export class ImagesComponent implements OnInit {
   moto: MotoModel;
   selectedImg: File;
   url = '';
+  urlMedia = '';
   texteIMG = 'Ajoutez une image';
 
   imageTab: ImageModel[];
@@ -21,19 +22,23 @@ export class ImagesComponent implements OnInit {
   imgToShow: any;
 
   constructor(private motoService: MotoService,
-              private mediaService: MediaService){
+              private mediaService: MediaService) {
   }
 
   ngOnInit(): void {
     this.moto = this.motoService.getSavedMoto();
-    this.imageTab = this.mediaService.getSavedImage();
+
+    this.mediaService.getAllImgMoto(this.moto.idMoto).subscribe(res => {
+      this.imageTab = res;
+    });
   }
 
   /**
    * Method when you charge an img
    * @param event Event generated when choose an img
+   * @param inputUrl Input where you type url, to reset it at ''
    */
-  onFileSelected(event): void {
+  onFileSelected(event, inputUrl): void {
     if (event.target.files.length > 0) {
       this.selectedImg = event.target.files[0];
       this.texteIMG = this.selectedImg.name;
@@ -43,6 +48,27 @@ export class ImagesComponent implements OnInit {
       reader.onload = (ev: any) => {
         this.url = ev.target.result;
       };
+
+      this.urlMedia = '';
+      inputUrl.value = '';
+    } else {
+      this.texteIMG = 'Ajoutez une image';
+      this.url = '';
+    }
+  }
+
+  /**
+   * Method when user want to add img by his link
+   * @param event Event when input change
+   * @param inputFile input File to reset it
+   */
+  onLinkChange(event, inputFile): void {
+    if (event.target.value !== null && event.target.value.length !== 0) {
+      this.url = event.target.value;
+      this.texteIMG = this.moto.slugMoto + '_' + (this.moto.nbImages + 1);
+      this.urlMedia = this.url;
+      inputFile.value = null;
+      this.selectedImg = null;
     } else {
       this.texteIMG = 'Ajoutez une image';
       this.url = '';
@@ -54,10 +80,17 @@ export class ImagesComponent implements OnInit {
    */
   onUpload(): void {
     const formData = new FormData();
-    formData.append('fileMedia', this.selectedImg, this.selectedImg.name);
+
+    if (this.selectedImg !== undefined && this.selectedImg !== null) {
+      formData.append('fileMedia', this.selectedImg, this.selectedImg.name);
+    } else {
+      formData.append('fileMedia', new File([], ''));
+    }
+
     formData.append('slugMoto', this.moto.slugMoto);
-    formData.append('descriptionMedia', this.selectedImg.name);
+    formData.append('descriptionMedia', this.moto.slugMoto + '_' + (this.moto.nbImages + 1));
     formData.append('isVideo', 'false');
+    formData.append('urlMedia', this.urlMedia);
 
     this.mediaService.saveImgMoto(formData);
   }

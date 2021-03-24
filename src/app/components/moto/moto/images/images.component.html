@@ -3,10 +3,12 @@
 
   <h5>{{texteIMG}}</h5>
 
+  <input #inputUrl type="text" id="inputUrlImg" name="inputUrlImg" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Image">
+
   <div id="btnImg">
-    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event)" accept="image/png, .jpg, .jpeg, .bmp">
-    <button type="button" (click)="inputFile.click()">Ajouter</button>
-    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="selectedImg === undefined">Upload</button>
+    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="image/png, .jpg, .jpeg, .bmp">
+    <button type="button" (click)="inputFile.click()">Selectionner une image</button>
+    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
   </div>
 </div>
 
