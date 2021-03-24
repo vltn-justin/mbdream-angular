@@ -9,7 +9,6 @@ import {VideoModel} from '../models/video-model';
 })
 export class MediaService {
 
-  private imageTab: ImageModel[];
   private url = 'http://chamalo-web.ddns.net:16650/media';
 
   constructor(private http: HttpClient) {
@@ -38,21 +37,8 @@ export class MediaService {
   saveImgMoto(formData: FormData): void {
     this.http.post(this.url + '/add-media', formData, {responseType: 'text'}).subscribe(res => {
       console.log(res);
+    }, error => {
+      console.log(error);
     });
-  }
-
-  /**
-   * Method used to share data of images list to different components for moto component
-   * @param imageList List of img to save
-   */
-  saveListImage(imageTab: ImageModel[]): void {
-    this.imageTab = imageTab;
-  }
-
-  /**
-   * Method to recover saved image list
-   */
-  getSavedImage(): ImageModel[] {
-    return this.imageTab;
   }
 }
