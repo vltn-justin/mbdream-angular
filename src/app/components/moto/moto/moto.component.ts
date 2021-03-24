@@ -8,7 +8,6 @@ import {InfosComponent} from './infos/infos.component';
 import {ImagesComponent} from './images/images.component';
 import {VideosComponent} from './videos/videos.component';
 import {CommentairesComponent} from './commentaires/commentaires.component';
-import {MediaService} from '../../../services/media.service';
 import {ImageModel} from '../../../models/image-model';
 
 @Component({
@@ -46,7 +45,6 @@ export class MotoComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private service: MotoService,
-              private mediaService: MediaService,
               private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
@@ -72,7 +70,7 @@ export class MotoComponent implements OnInit {
   getOneMoto(slugMoto: string): void {
     this.service.getOneMoto(slugMoto).subscribe(res => {
       this.moto = res;
-      // Charge les images
+      // On charge l'image background
       this.loadImg();
       // Partage des données avec les components enfant
       this.service.saveOneMoto(this.moto);
@@ -84,15 +82,11 @@ export class MotoComponent implements OnInit {
   }
 
   /**
-   * Method to load image and save them inside image service
+   * Method to set background img
    */
   loadImg(): void {
-    if (this.moto.nbImages > 0) {
-      this.mediaService.getAllImgMoto(this.moto.idMoto).subscribe(res => {
-        this.imageTab = res;
-        this.randomImg();
-        this.mediaService.saveListImage(this.imageTab);
-      });
+    if (this.moto.backgroundImgMoto !== null) {
+      this.backgroundIMG = this.moto.backgroundImgMoto;
     }
   }
 
@@ -104,12 +98,5 @@ export class MotoComponent implements OnInit {
     const component = this.componentsMapping[this.tabSelector];
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     this.componentRef = this.container.createComponent(factory);
-  }
-
-  /**
-   * Method to get a random number between 0 and number of img, for display in header
-   */
-  randomImg(): void {
-    this.backgroundIMG =  this.imageTab[Math.floor((Math.random() * this.imageTab.length))].lienImage;
   }
 }
