@@ -4,6 +4,7 @@ export interface MotoModel {
   nomMoto: string;
   prixMoto: number;
   descriptionMoto: string;
+  backgroundImgMoto: string;
   marque: Marque;
   categorie: Categorie;
   dateAjout: Date;
@@ -190,6 +191,7 @@ const typeMap: any = {
     {json: 'nomMoto', js: 'nomMoto', typ: ''},
     {json: 'prixMoto', js: 'prixMoto', typ: 0},
     {json: 'descriptionMoto', js: 'descriptionMoto', typ: ''},
+    {json: 'backgroundImgMoto', js: 'backgroundImgMoto', typ: ''},
     {json: 'marque', js: 'marque', typ: r('Marque')},
     {json: 'categorie', js: 'categorie', typ: r('Categorie')},
     {json: 'dateAjout', js: 'dateAjout', typ: Date},
