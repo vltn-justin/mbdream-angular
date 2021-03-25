@@ -1,9 +1,23 @@
-<ng-container *ngIf="moto.nbVideos> 0 else noVideos">
-  <div *ngFor="let video of videoTab">
-    <iframe [src]="sanitizeURL(video.lienVideo)" frameborder="0"></iframe>
+<div id="ajoutVideo">
+  <iframe id="previewVideo" [src]="url" alt="Video Preview">
+
+  <h5>{{texteVideo}}</h5>
+
+  <input #inputUrl type="text" id="inputUrlVideo" name="inputUrlVideo" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Video">
+
+  <div id="btnImg">
+    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="video/mp4, .mov, .flv">
+    <button type="button" (click)="inputFile.click()">Selectionner une vidéo</button>
+    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
+  </div>
+</div>
+
+<div id="videosMoto" *ngIf="moto.nbVideos> 0 else noVideos">
+  <div id="oneVideoMoto" *ngFor="let video of videoTab">
+    <iframe [src]="sanitizeURL(video.lienVideo)" title="{{video.description}}" allowfullscreen></iframe>
     {{video.description}}
   </div>
-</ng-container>
+</div>
 
 <ng-template #noVideos>
   Pas de vidéo pour cette moto
