@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MotoModel} from '../models/moto-model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,6 @@ import {MotoModel} from '../models/moto-model';
 export class MotoService {
 
   private moto: MotoModel;
-  private url = 'http://chamalo-web.ddns.net:16650/moto';
 
   constructor(private http: HttpClient) { }
 
@@ -18,14 +18,14 @@ export class MotoService {
    * @param slug Slug of moto
    */
   getOneMoto(slug: string): Observable<MotoModel> {
-    return this.http.get<MotoModel>(this.url + '/get/slug/' + slug);
+    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get/slug/' + slug);
   }
 
   /**
    * Method to get the count of all Moto
    */
   countAllMoto(): Observable<number> {
-    return this.http.get<number>(this.url + '/count');
+    return this.http.get<number>(environment.apiBaseUrl + '/moto/count');
   }
 
   /**
