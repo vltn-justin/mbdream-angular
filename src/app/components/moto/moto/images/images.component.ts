@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
@@ -34,9 +34,9 @@ export class ImagesComponent implements OnInit {
   }
 
   /**
-   * Method when you charge an img
+   * Method when you charge an img from your computer
    * @param event Event generated when choose an img
-   * @param inputUrl Input where you type url, to reset it at ''
+   * @param inputUrl Input where you tap url, only here for reset it
    */
   onFileSelected(event, inputUrl): void {
     if (event.target.files.length > 0) {
@@ -76,7 +76,7 @@ export class ImagesComponent implements OnInit {
   }
 
   /**
-   * Method when you upload an img
+   * Method to upload an img
    */
   onUpload(): void {
     const formData = new FormData();
