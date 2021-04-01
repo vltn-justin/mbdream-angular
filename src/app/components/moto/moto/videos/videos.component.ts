@@ -18,7 +18,7 @@ export class VideosComponent implements OnInit {
   selectedVideo: File;
 
   texteVideo = 'Ajoutez une vidéo';
-  url = '';
+  url: SafeResourceUrl = '';
 
   constructor(private motoService: MotoService, private mediaService: MediaService, private sanitizer: DomSanitizer) {
   }
@@ -53,7 +53,8 @@ export class VideosComponent implements OnInit {
    * @param input Input file, only here for reset
    */
   onLinkChange(event, input): void {
-
+    this.url = this.sanitizeURL(event.target.file);
+    document.getElementById('previewVideo').style.display = 'block';
   }
 
   /**
