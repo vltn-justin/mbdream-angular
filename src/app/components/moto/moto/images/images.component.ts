@@ -3,6 +3,7 @@ import {MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
 import {ImageModel} from '../../../../models/image-model';
+import {imgValidator} from '../../../../validator/img-validator';
 
 @Component({
   selector: 'app-images',
@@ -20,6 +21,8 @@ export class ImagesComponent implements OnInit {
   imageTab: ImageModel[];
 
   imgToShow: any;
+
+  errorMsg = '';
 
   constructor(private motoService: MotoService,
               private mediaService: MediaService) {
@@ -79,19 +82,23 @@ export class ImagesComponent implements OnInit {
    * Method to upload an img
    */
   onUpload(): void {
-    const formData = new FormData();
+    if (imgValidator(this.selectedImg.name)) {
+      const formData = new FormData();
 
-    if (this.selectedImg !== undefined && this.selectedImg !== null) {
-      formData.append('fileMedia', this.selectedImg, this.selectedImg.name);
+      if (this.selectedImg !== undefined && this.selectedImg !== null) {
+        formData.append('fileMedia', this.selectedImg, this.selectedImg.name);
+      } else {
+        formData.append('fileMedia', new File([], ''));
+      }
+
+      formData.append('slugMoto', this.moto.slugMoto);
+      formData.append('descriptionMedia', this.moto.slugMoto + '_' + (this.moto.nbImages + 1));
+      formData.append('isVideo', 'false');
+      formData.append('urlMedia', this.urlMedia);
+
+      this.mediaService.saveImgMoto(formData);
     } else {
-      formData.append('fileMedia', new File([], ''));
+
     }
-
-    formData.append('slugMoto', this.moto.slugMoto);
-    formData.append('descriptionMedia', this.moto.slugMoto + '_' + (this.moto.nbImages + 1));
-    formData.append('isVideo', 'false');
-    formData.append('urlMedia', this.urlMedia);
-
-    this.mediaService.saveImgMoto(formData);
   }
 }

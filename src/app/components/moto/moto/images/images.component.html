@@ -10,6 +10,8 @@
     <button type="button" (click)="inputFile.click()">Selectionner une image</button>
     <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
   </div>
+
+  <span *ngIf="errorMsg.length > 1 ">{{errorMsg}}</span>
 </div>
 
 <div id="imagesMoto" *ngIf="moto.nbImages > 0 else noImages">
