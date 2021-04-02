@@ -1,17 +1,18 @@
 <div id="ajoutImg">
-  <img *ngIf="url !== ''" id="previewIMG" [src]="url" alt="Image Preview">
+  <details>
+    <summary>{{texteIMG}}</summary>
+    <img *ngIf="url !== ''" id="previewIMG" [src]="url" alt="Image Preview">
 
-  <h5>{{texteIMG}}</h5>
+    <input #inputUrl type="text" id="inputUrlImg" name="inputUrlImg" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Image">
 
-  <input #inputUrl type="text" id="inputUrlImg" name="inputUrlImg" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Image">
+    <div id="btnImg">
+      <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="image/png, .jpg, .jpeg, .bmp">
+      <button type="button" (click)="inputFile.click()">Selectionner une image</button>
+      <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
+    </div>
 
-  <div id="btnImg">
-    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="image/png, .jpg, .jpeg, .bmp">
-    <button type="button" (click)="inputFile.click()">Selectionner une image</button>
-    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
-  </div>
-
-  <span id="errorMsg" *ngIf="errorMsg.length > 1 ">{{errorMsg}}</span>
+    <span id="errorMsg" *ngIf="errorMsg.length > 1 ">{{errorMsg}}</span>
+  </details>
 </div>
 
 <div id="imagesMoto" *ngIf="moto.nbImages > 0 else noImages">
