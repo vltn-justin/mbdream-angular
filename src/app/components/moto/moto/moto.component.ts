@@ -52,7 +52,12 @@ export class MotoComponent implements OnInit {
     // Path Variable; Slug
     this.slug = this.route.snapshot.params.slug;
 
-    if (this.slug !== undefined) {
+    // Get saved moto from motoList
+    this.moto = this.service.getSavedMoto();
+
+    if (this.moto !== undefined) {
+      this.loadImg();
+    } else if (this.slug !== undefined) {
       this.getOneMoto(this.slug);
     }
 
@@ -74,8 +79,6 @@ export class MotoComponent implements OnInit {
       this.loadImg();
       // Partage des données avec les components enfant
       this.service.saveOneMoto(this.moto);
-      // Pour actualiser les données afficher par le component enfant
-      this.changeContent();
     }, error => {
       this.router.navigate(['/404']).then(null);
     });
