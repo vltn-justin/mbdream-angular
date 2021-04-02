@@ -82,7 +82,7 @@ export class ImagesComponent implements OnInit {
    * Method to upload an img
    */
   onUpload(): void {
-    if (imgValidator(this.selectedImg.name)) {
+    if (this.checkValidator()) {
       const formData = new FormData();
 
       if (this.selectedImg !== undefined && this.selectedImg !== null) {
@@ -98,7 +98,19 @@ export class ImagesComponent implements OnInit {
 
       this.mediaService.saveImgMoto(formData);
     } else {
+      this.errorMsg = 'Ceci n\'est pas une image';
+    }
+  }
 
+  /**
+   * Method to check with img validator
+   */
+  checkValidator(): boolean {
+    if (this.url.length > 0) {
+      return imgValidator(this.url);
+    }
+    if (this.selectedImg.name !== null) {
+      return imgValidator(this.selectedImg.name);
     }
   }
 }
