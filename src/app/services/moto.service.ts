@@ -22,6 +22,13 @@ export class MotoService {
   }
 
   /**
+   * Method to get all moto
+   */
+  getAllMoto(): Observable<MotoModel[]> {
+    return this.http.get<MotoModel[]>(environment.apiBaseUrl + '/moto/get');
+  }
+
+  /**
    * Method to get the count of all Moto
    */
   countAllMoto(): Observable<number> {
