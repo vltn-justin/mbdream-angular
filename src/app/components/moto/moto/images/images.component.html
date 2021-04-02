@@ -1,5 +1,5 @@
 <div id="ajoutImg">
-  <img id="previewIMG" [src]="url" alt="Image Preview">
+  <img *ngIf="url !== ''" id="previewIMG" [src]="url" alt="Image Preview">
 
   <h5>{{texteIMG}}</h5>
 
@@ -11,7 +11,7 @@
     <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
   </div>
 
-  <span *ngIf="errorMsg.length > 1 ">{{errorMsg}}</span>
+  <span id="errorMsg" *ngIf="errorMsg.length > 1 ">{{errorMsg}}</span>
 </div>
 
 <div id="imagesMoto" *ngIf="moto.nbImages > 0 else noImages">
