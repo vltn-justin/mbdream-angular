@@ -54,6 +54,7 @@ export class ImagesComponent implements OnInit {
 
       this.urlMedia = '';
       inputUrl.value = '';
+      this.errorMsg = '';
     } else {
       this.texteIMG = 'Ajoutez une image';
       this.url = '';
@@ -72,6 +73,7 @@ export class ImagesComponent implements OnInit {
       this.urlMedia = this.url;
       inputFile.value = null;
       this.selectedImg = null;
+      this.errorMsg = '';
     } else {
       this.texteIMG = 'Ajoutez une image';
       this.url = '';
