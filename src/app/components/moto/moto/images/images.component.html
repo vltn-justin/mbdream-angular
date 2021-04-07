@@ -5,6 +5,11 @@
 
     <input #inputUrl type="text" id="inputUrlImg" name="inputUrlImg" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Image">
 
+    <span *ngIf="uploadProgress > 0" id="progressBar">
+      <progress [value]="uploadProgress"></progress>
+      {{uploadProgress}} %
+    </span>
+
     <div id="btnImg">
       <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="image/png, .jpg, .jpeg, .bmp">
       <button type="button" (click)="inputFile.click()">Selectionner une image</button>

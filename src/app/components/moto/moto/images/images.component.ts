@@ -4,6 +4,7 @@ import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
 import {ImageModel} from '../../../../models/image-model';
 import {imgValidator} from '../../../../validator/img-validator';
+import {HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-images',
@@ -23,6 +24,8 @@ export class ImagesComponent implements OnInit {
   imgToShow: any;
 
   errorMsg = '';
+
+  uploadProgress: number;
 
   constructor(private motoService: MotoService,
               private mediaService: MediaService) {
@@ -98,7 +101,11 @@ export class ImagesComponent implements OnInit {
       formData.append('isVideo', 'false');
       formData.append('urlMedia', this.urlMedia);
 
-      this.mediaService.saveImgMoto(formData);
+      this.mediaService.saveImgMoto(formData).subscribe(res => {
+        if (res.type === HttpEventType.UploadProgress) {
+          this.uploadProgress = Math.round(res.loaded / res.total) * 100;
+        }}
+      );
     } else {
       this.errorMsg = 'Ceci n\'est pas une image';
     }
@@ -108,7 +115,7 @@ export class ImagesComponent implements OnInit {
    * Method to check with img validator
    */
   checkValidator(): boolean {
-    if (this.url.length > 0) {
+    if (this.urlMedia.length > 0) {
       return imgValidator(this.url);
     }
     if (this.selectedImg.name !== null) {
