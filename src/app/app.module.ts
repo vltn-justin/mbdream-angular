@@ -16,6 +16,7 @@ import { ImagesComponent } from './components/moto/moto/images/images.component'
 import { VideosComponent } from './components/moto/moto/videos/videos.component';
 import { CommentairesComponent } from './components/moto/moto/commentaires/commentaires.component';
 import { InfosComponent } from './components/moto/moto/infos/infos.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,13 @@ import { InfosComponent } from './components/moto/moto/infos/infos.component';
     CommentairesComponent,
     InfosComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
