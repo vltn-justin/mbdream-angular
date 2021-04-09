@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpEventType} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {ImageModel} from '../models/image-model';
 import {Observable} from 'rxjs';
 import {VideoModel} from '../models/video-model';
@@ -33,7 +33,7 @@ export class MediaService {
    * Method to save an img
    * @param formData FormData with all data to save
    */
-  saveImgMoto(formData: FormData): Observable<any> {
+  saveMedia(formData: FormData): Observable<any> {
     return this.http.post(environment.apiBaseUrl + '/media/add-media', formData, {responseType: 'text', reportProgress: true, observe: 'events'});
   }
 }
