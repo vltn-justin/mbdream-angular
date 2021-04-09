@@ -1,11 +1,101 @@
-<ng-container *ngIf="moto.nomMoto === 'zazrezrze' else noInfos">
-  {{moto.descriptionMoto}}
+<ng-container  *ngIf="info !== undefined else noInfos">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Info
+        </th>
+
+        <th>
+          Valeur
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Prix
+        </td>
+
+        <td>
+          {{info.prix}} €
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Architecture moteur
+        </td>
+
+        <td>
+          {{info.architectureMoteur}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Cylindré
+        </td>
+
+        <td>
+          {{info.cylindre}} cm3
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Puissance
+        </td>
+
+        <td>
+          {{info.puissance}} ch
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Couple
+        </td>
+
+        <td>
+          {{info.couple}} nM
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Poid
+        </td>
+
+        <td>
+          {{info.poid}} KG
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Capacité Reservoir
+        </td>
+
+        <td>
+          {{info.capaciteReservoir}} L
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Consommation
+        </td>
+
+        <td>
+          {{info.consommation}} L/100
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-container>
 
 <ng-template #noInfos>
   Pas d'infos pour cette moto
 </ng-template>
-
-<!--
-  Tableau avec infos, moteur, prix, poid, consomation, marque, etc ...
--->
