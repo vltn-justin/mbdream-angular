@@ -1,0 +1,53 @@
+#ajoutVideo
+  text-align: center
+  details
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    margin-bottom: 1rem
+    #previewVideo
+      margin: auto
+      width: 500px
+      height: auto
+      display: none
+    #inputUrlVideo
+      width: 35%
+      margin: 0.5rem auto
+    #descriptionVideo
+      margin: 0 auto 0.5rem auto
+      resize: none
+    #btnVideo
+      button
+        padding: 10px
+        background-color: #ff6347
+        color: white
+        text-align: center
+        border-radius: 5px
+        border: 1px solid transparent
+        &:hover
+          cursor: pointer
+          background-color: #ff5030
+        &:disabled
+          background-color: lightgrey
+#videosMoto
+  display: flex
+  justify-content: space-around
+  align-items: center
+  flex-wrap: wrap
+  #oneVideoMoto
+    border: 1px solid #18191c
+    box-shadow: 8px 8px 12px #aaa
+    border-radius: 5px
+    width: 20%
+    height: 250px
+    overflow: hidden
+    figure
+      width: 100%
+      height: 100%
+      iframe
+        width: 100%
+        height: 75%
+      figcaption
+        margin: 0.25rem

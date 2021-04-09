@@ -4,6 +4,7 @@ import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
 import {VideoModel} from '../../../../models/video-model';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-videos',
@@ -15,10 +16,12 @@ export class VideosComponent implements OnInit {
   moto: MotoModel;
   videoTab: VideoModel[];
 
-  selectedVideo: File;
-
   texteVideo = 'Ajoutez une vidéo';
-  url: SafeResourceUrl = '';
+  url = '';
+  descriptionVideo = '';
+  urlSafe: SafeResourceUrl;
+
+  uploadProgress: number;
 
   constructor(private motoService: MotoService, private mediaService: MediaService, private sanitizer: DomSanitizer) {
   }
@@ -39,22 +42,17 @@ export class VideosComponent implements OnInit {
   }
 
   /**
-   * Method when you charge a video from your computer
-   * @param event Event generated when you charge a video
-   * @param input Input where you tap url, only here for reset it
-   */
-  onFileSelected(event, input): void {
-
-  }
-
-  /**
    * Method when you want to charge a video from a link
    * @param event Event when input change
-   * @param input Input file, only here for reset
    */
-  onLinkChange(event, input): void {
-    this.url = this.sanitizeURL(event.target.file);
-    document.getElementById('previewVideo').style.display = 'block';
+  onLinkChange(event): void {
+    if (this.url.length > 0) {
+      this.urlSafe = this.sanitizeURL(event.target.value);
+      document.getElementById('previewVideo').style.display = 'block';
+    } else {
+      this.url = '';
+      document.getElementById('previewVideo').style.display = 'none';
+    }
   }
 
   /**
@@ -62,5 +60,19 @@ export class VideosComponent implements OnInit {
    */
   onUpload(): void {
     const formData = new FormData();
+
+    formData.append('fileMedia', new File([], ''));
+
+    formData.append('slugMoto', this.moto.slugMoto);
+    formData.append('descriptionMedia', this.descriptionVideo);
+    formData.append('isVideo', 'true');
+    formData.append('urlMedia', this.url);
+
+    this.mediaService.saveMedia(formData).subscribe(res => {
+        if (res.type === HttpEventType.UploadProgress) {
+          this.uploadProgress = Math.round(res.loaded / res.total) * 100;
+        }
+      }
+    );
   }
 }

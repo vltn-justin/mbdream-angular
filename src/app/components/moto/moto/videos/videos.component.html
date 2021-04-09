@@ -1,21 +1,30 @@
 <div id="ajoutVideo">
-  <iframe id="previewVideo" [src]="url" style="display: none"></iframe>
+  <details>
+    <summary>{{texteVideo}}</summary>
 
-  <h5>{{texteVideo}}</h5>
+    <iframe id="previewVideo" [src]="urlSafe"></iframe>
 
-  <input #inputUrl type="text" id="inputUrlVideo" name="inputUrlVideo" (input)="onLinkChange($event, this.inputFile)" placeholder="URL Video">
+    <input [(ngModel)]="url" type="text" id="inputUrlVideo" name="inputUrlVideo" (input)="onLinkChange($event)" placeholder="URL Video /!\ Youtube = lien embed">
 
-  <div id="btnImg">
-    <input #inputFile style="display: none" type="file" (change)="onFileSelected($event, this.inputUrl)" accept="video/mp4, .mov, .flv">
-    <button type="button" (click)="inputFile.click()">Selectionner une vidéo</button>
-    <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="url === ''">Upload</button>
-  </div>
+    <textarea [(ngModel)]="descriptionVideo" name="descriptionVideo" id="descriptionVideo" cols="30" rows="5" maxlength="200" placeholder="Description de la vidéo"></textarea>
+
+    <span *ngIf="uploadProgress > 0" id="progressBar">
+      <progress [value]="uploadProgress"></progress>
+      {{uploadProgress}} %
+    </span>
+
+    <div id="btnVideo">
+      <button id="btnUpload" type="button" (click)="onUpload()" [disabled]="!url.length">Upload</button>
+    </div>
+  </details>
 </div>
 
 <div id="videosMoto" *ngIf="moto.nbVideos> 0 else noVideos">
   <div id="oneVideoMoto" *ngFor="let video of videoTab">
-    <iframe [src]="sanitizeURL(video.lienVideo)" title="{{video.description}}" allowfullscreen></iframe>
-    {{video.description}}
+    <figure>
+      <iframe [src]="sanitizeURL(video.lienVideo)" title="{{video.description}}" allowfullscreen></iframe>
+      <figcaption>{{video.description}}</figcaption>
+    </figure>
   </div>
 </div>
 
