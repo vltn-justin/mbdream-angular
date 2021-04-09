@@ -101,7 +101,7 @@ export class ImagesComponent implements OnInit {
       formData.append('isVideo', 'false');
       formData.append('urlMedia', this.urlMedia);
 
-      this.mediaService.saveImgMoto(formData).subscribe(res => {
+      this.mediaService.saveMedia(formData).subscribe(res => {
         if (res.type === HttpEventType.UploadProgress) {
           this.uploadProgress = Math.round(res.loaded / res.total) * 100;
         }}
