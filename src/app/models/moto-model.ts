@@ -11,6 +11,7 @@ export interface MotoModel {
   isFeatured: boolean;
   nbImages: number;
   nbVideos: number;
+  idInfo: number;
 }
 
 export interface Categorie {
@@ -198,6 +199,7 @@ const typeMap: any = {
     {json: 'isFeatured', js: 'isFeatured', typ: true},
     {json: 'nbImages', js: 'nbImages', typ: 0},
     {json: 'nbVideos', js: 'nbVideos', typ: 0},
+    {json: 'idInfo', js: 'idInfo', typ: 0},
   ], false),
   'Categorie': o([
     {json: 'nomCategorie', js: 'nomCategorie', typ: ''},
