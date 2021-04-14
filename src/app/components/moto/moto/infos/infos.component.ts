@@ -20,10 +20,8 @@ export class InfosComponent implements OnInit {
   ngOnInit(): void {
     this.moto = this.motoService.getSavedMoto();
 
-    if (this.moto.idInfo !== null) {
-      this.infoService.getInfoMoto(this.moto.idInfo).subscribe(res => {
-        this.info = res;
-      });
-    }
+    this.infoService.getInfoMoto(this.moto.slugMoto).subscribe(res => {
+      this.info = res;
+    });
   }
 }
