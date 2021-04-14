@@ -52,20 +52,10 @@ export class MotoComponent implements OnInit {
     // Path Variable; Slug
     this.slug = this.route.snapshot.params.slug;
 
-    // Get saved moto from motoList
-    this.moto = this.service.getSavedMoto();
-
-    if (this.moto !== undefined) {
-      this.loadImg();
-    } else if (this.slug !== undefined) {
-      this.getOneMoto(this.slug);
-    }
+    this.getOneMoto(this.slug);
 
     // Default tab is Description
     this.tabSelector = 'description';
-
-    // Dynamic component loader for tabs
-    this.changeContent();
   }
 
   /**
@@ -79,6 +69,8 @@ export class MotoComponent implements OnInit {
       this.loadImg();
       // Partage des données avec les components enfant
       this.service.saveOneMoto(this.moto);
+      // Dynamic component loader for tabs
+      this.changeContent();
     }, error => {
       this.router.navigate(['/404']).then(null);
     });

@@ -18,12 +18,4 @@ export class MotoListComponent implements OnInit {
       this.motoList = res;
     });
   }
-
-  /**
-   * Method to save one moto into service
-   * @param moto Moto to save
-   */
-  saveMoto(moto: MotoModel): void {
-    this.service.saveOneMoto(moto);
-  }
 }
