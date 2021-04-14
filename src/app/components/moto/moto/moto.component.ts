@@ -8,7 +8,6 @@ import {InfosComponent} from './infos/infos.component';
 import {ImagesComponent} from './images/images.component';
 import {VideosComponent} from './videos/videos.component';
 import {CommentairesComponent} from './commentaires/commentaires.component';
-import {ImageModel} from '../../../models/image-model';
 
 @Component({
   selector: 'app-moto',
@@ -26,7 +25,6 @@ export class MotoComponent implements OnInit {
   moto: MotoModel;
   slug: string;
 
-  imageTab: ImageModel[];
   backgroundIMG = '';
 
   tabSelector: string;
