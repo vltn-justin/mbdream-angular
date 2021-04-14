@@ -19,11 +19,11 @@
   </details>
 </div>
 
-<div id="videosMoto" *ngIf="moto.nbVideos> 0 else noVideos">
+<div id="videosMoto" *ngIf="videoTab?.length > 0 else noVideos">
   <div id="oneVideoMoto" *ngFor="let video of videoTab">
     <figure>
-      <iframe [src]="sanitizeURL(video.lienVideo)" title="{{video.description}}" allowfullscreen></iframe>
-      <figcaption>{{video.description}}</figcaption>
+      <iframe [src]="sanitizeURL(video.lienMedia)" title="{{video.descriptionMedia}}" allowfullscreen></iframe>
+      <figcaption>{{video.descriptionMedia}}</figcaption>
     </figure>
   </div>
 </div>

@@ -20,10 +20,10 @@
   </details>
 </div>
 
-<div id="imagesMoto" *ngIf="moto.nbImages > 0 else noImages">
+<div id="imagesMoto" *ngIf="imageTab?.length > 0 else noImages">
   <div id="oneImgMoto" *ngFor="let img of imageTab">
     <figure>
-      <img src="{{img.lienImage}}" alt="{{img.description}}">
+      <img src="{{img.lienMedia}}" alt="{{img.descriptionMedia}}">
     </figure>
   </div>
 </div>

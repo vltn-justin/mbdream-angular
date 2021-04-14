@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
-import {VideoModel} from '../../../../models/video-model';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {HttpEventType} from '@angular/common/http';
+import {MediaModel} from '../../../../models/media-model';
 
 @Component({
   selector: 'app-videos',
@@ -14,7 +14,7 @@ import {HttpEventType} from '@angular/common/http';
 export class VideosComponent implements OnInit {
 
   moto: MotoModel;
-  videoTab: VideoModel[];
+  videoTab: MediaModel[];
 
   texteVideo = 'Ajoutez une vidéo';
   url = '';
@@ -28,7 +28,7 @@ export class VideosComponent implements OnInit {
 
   ngOnInit(): void {
     this.moto = this.motoService.getSavedMoto();
-    this.mediaService.getAllVideoMoto(this.moto.idMoto).subscribe(res => {
+    this.mediaService.getAllMediaMoto(this.moto.slugMoto, true).subscribe(res => {
       this.videoTab = res;
     });
   }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {MediaService} from '../../../../services/media.service';
-import {ImageModel} from '../../../../models/image-model';
+import {MediaModel} from '../../../../models/media-model';
 import {imgValidator} from '../../../../validator/img-validator';
 import {HttpEventType} from '@angular/common/http';
 
@@ -19,7 +19,7 @@ export class ImagesComponent implements OnInit {
   urlMedia = '';
   texteIMG = 'Ajoutez une image';
 
-  imageTab: ImageModel[];
+  imageTab: MediaModel[];
 
   imgToShow: any;
 
@@ -34,7 +34,7 @@ export class ImagesComponent implements OnInit {
   ngOnInit(): void {
     this.moto = this.motoService.getSavedMoto();
 
-    this.mediaService.getAllImgMoto(this.moto.idMoto).subscribe(res => {
+    this.mediaService.getAllMediaMoto(this.moto.slugMoto, false).subscribe(res => {
       this.imageTab = res;
     });
   }
@@ -72,7 +72,7 @@ export class ImagesComponent implements OnInit {
   onLinkChange(event, inputFile): void {
     if (event.target.value !== null && event.target.value.length !== 0) {
       this.url = event.target.value;
-      this.texteIMG = this.moto.slugMoto + '_' + (this.moto.nbImages + 1);
+      this.texteIMG = this.moto.slugMoto + '_' + (this.moto.nbMedia + 1);
       this.urlMedia = this.url;
       inputFile.value = null;
       this.selectedImg = null;
@@ -97,14 +97,15 @@ export class ImagesComponent implements OnInit {
       }
 
       formData.append('slugMoto', this.moto.slugMoto);
-      formData.append('descriptionMedia', this.moto.slugMoto + '_' + (this.moto.nbImages + 1));
+      formData.append('descriptionMedia', this.moto.slugMoto + '_' + (this.moto.nbMedia + 1));
       formData.append('isVideo', 'false');
       formData.append('urlMedia', this.urlMedia);
 
       this.mediaService.saveMedia(formData).subscribe(res => {
-        if (res.type === HttpEventType.UploadProgress) {
-          this.uploadProgress = Math.round(res.loaded / res.total) * 100;
-        }}
+          if (res.type === HttpEventType.UploadProgress) {
+            this.uploadProgress = Math.round(res.loaded / res.total) * 100;
+          }
+        }
       );
     } else {
       this.errorMsg = 'Ceci n\'est pas une image';
