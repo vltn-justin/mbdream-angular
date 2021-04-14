@@ -13,10 +13,10 @@ export class InfoService {
   }
 
   /**
-   * Method to get info of a moto with id of info
-   * @param idInfo if od info
+   * Method to get info of a moto with is slug
+   * @param slugMoto Slug of moto
    */
-  getInfoMoto(idInfo: number): Observable<InfoModel> {
-    return this.http.get<InfoModel>(environment.apiBaseUrl + '/info/get/' + idInfo);
+  getInfoMoto(slugMoto: string): Observable<InfoModel> {
+    return this.http.get<InfoModel>(environment.apiBaseUrl + '/info/get/moto/' + slugMoto);
   }
 }
