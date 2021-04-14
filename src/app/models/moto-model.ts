@@ -1,27 +1,25 @@
 export interface MotoModel {
-  idMoto: number;
   slugMoto: string;
   nomMoto: string;
+  backgroundImgMoto: string;
   prixMoto: number;
   descriptionMoto: string;
-  backgroundImgMoto: string;
   marque: Marque;
   categorie: Categorie;
-  dateAjout: Date;
-  isFeatured: boolean;
-  nbImages: number;
-  nbVideos: number;
-  idInfo: number;
+  nbMedia: number;
+  idInfo: null;
 }
 
 export interface Categorie {
   nomCategorie: string;
   slugCategorie: string;
+  nbMoto: number;
 }
 
 export interface Marque {
   nomMarque: string;
   slugMarque: string;
+  nbMoto: number;
 }
 
 // Converts JSON strings to/from your types
@@ -187,26 +185,24 @@ function r(name: string) {
 
 const typeMap: any = {
   'MotoModel': o([
-    {json: 'idMoto', js: 'idMoto', typ: 0},
     {json: 'slugMoto', js: 'slugMoto', typ: ''},
     {json: 'nomMoto', js: 'nomMoto', typ: ''},
+    {json: 'backgroundImgMoto', js: 'backgroundImgMoto', typ: ''},
     {json: 'prixMoto', js: 'prixMoto', typ: 0},
     {json: 'descriptionMoto', js: 'descriptionMoto', typ: ''},
-    {json: 'backgroundImgMoto', js: 'backgroundImgMoto', typ: ''},
     {json: 'marque', js: 'marque', typ: r('Marque')},
     {json: 'categorie', js: 'categorie', typ: r('Categorie')},
-    {json: 'dateAjout', js: 'dateAjout', typ: Date},
-    {json: 'isFeatured', js: 'isFeatured', typ: true},
-    {json: 'nbImages', js: 'nbImages', typ: 0},
-    {json: 'nbVideos', js: 'nbVideos', typ: 0},
-    {json: 'idInfo', js: 'idInfo', typ: 0},
+    {json: 'nbMedia', js: 'nbMedia', typ: 0},
+    {json: 'idInfo', js: 'idInfo', typ: null},
   ], false),
   'Categorie': o([
     {json: 'nomCategorie', js: 'nomCategorie', typ: ''},
     {json: 'slugCategorie', js: 'slugCategorie', typ: ''},
+    {json: 'nbMoto', js: 'nbMoto', typ: 0},
   ], false),
   'Marque': o([
-    {json: 'nomMarque', js: 'nomMarque', typ: ""},
-    {json: "slugMarque", js: "slugMarque", typ: ""},
+    {json: 'nomMarque', js: 'nomMarque', typ: ''},
+    {json: 'slugMarque', js: "slugMarque", typ: ""},
+    {json: "nbMoto", js: "nbMoto", typ: 0},
   ], false),
 };
