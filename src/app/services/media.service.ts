@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ImageModel} from '../models/image-model';
+import {MediaModel} from '../models/media-model';
 import {Observable} from 'rxjs';
-import {VideoModel} from '../models/video-model';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -14,19 +13,12 @@ export class MediaService {
   }
 
   /**
-   * Method to get all img of moto
-   * @param idMoto Id of Moto
-   */
-  getAllImgMoto(idMoto: number): Observable<ImageModel[]> {
-    return this.http.get<ImageModel[]>(environment.apiBaseUrl + '/media/img/get-all-moto/' + idMoto);
-  }
-
-  /**
    * Method to get all video of moto
-   * @param idMoto Id of moto
+   * @param slugMoto Slug of moto
+   * @param isVideo Boolean to know if you want videos or images
    */
-  getAllVideoMoto(idMoto: number): Observable<VideoModel[]> {
-    return this.http.get<VideoModel[]>(environment.apiBaseUrl + '/media/video/get-all-moto/' + idMoto);
+  getAllMediaMoto(slugMoto: string, isVideo: boolean): Observable<MediaModel[]> {
+    return this.http.get<MediaModel[]>(environment.apiBaseUrl + '/media/get/' + slugMoto + '/' + isVideo);
   }
 
   /**
@@ -34,6 +26,10 @@ export class MediaService {
    * @param formData FormData with all data to save
    */
   saveMedia(formData: FormData): Observable<any> {
-    return this.http.post(environment.apiBaseUrl + '/media/add-media', formData, {responseType: 'text', reportProgress: true, observe: 'events'});
+    return this.http.post(environment.apiBaseUrl + '/media/add', formData, {
+      responseType: 'text',
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 }

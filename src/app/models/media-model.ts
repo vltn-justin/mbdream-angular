@@ -1,19 +1,18 @@
-export interface ImageModel {
-  idImage: number;
-  lienImage: string;
-  description: string;
-  moto: string;
+export interface MediaModel {
+  idMedia: number;
+  lienMedia: string;
+  descriptionMedia: string;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toImageModel(json: string): ImageModel {
-    return cast(JSON.parse(json), r('ImageModel'));
+  public static toMediaModel(json: string): MediaModel {
+    return cast(JSON.parse(json), r('MediaModel'));
   }
 
-  public static imageModelToJson(value: ImageModel): string {
-    return JSON.stringify(uncast(value, r('ImageModel')), null, 2);
+  public static mediaModelToJson(value: MediaModel): string {
+    return JSON.stringify(uncast(value, r('MediaModel')), null, 2);
   }
 }
 
@@ -167,10 +166,9 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  'ImageModel': o([
-    {json: 'idImage', js: 'idImage', typ: 0},
-    {json: 'lienImage', js: 'lienImage', typ: ''},
-    {json: 'description', js: "description", typ: ""},
-    {json: "moto", js: "moto", typ: ""},
+  'MediaModel': o([
+    {json: 'idMedia', js: 'idMedia', typ: 0},
+    {json: 'lienMedia', js: 'lienMedia', typ: ''},
+    {json: "descriptionMedia", js: "descriptionMedia", typ: ""},
   ], false),
 };
