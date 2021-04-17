@@ -13,6 +13,7 @@ export class InfosComponent implements OnInit {
 
   moto: MotoModel;
   info: InfoModel;
+  errorMsg: string;
 
   constructor(private motoService: MotoService, private infoService: InfoService) {
   }
@@ -22,6 +23,8 @@ export class InfosComponent implements OnInit {
 
     this.infoService.getInfoMoto(this.moto.slugMoto).subscribe(res => {
       this.info = res;
-    });
+    }, err => {
+      this.errorMsg = err.error;
+    }, );
   }
 }
