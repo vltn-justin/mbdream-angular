@@ -21,6 +21,13 @@ export class MarqueService {
   }
 
   /**
+   * Method to get all marques
+   */
+  getAllMarques(): Observable<MarqueModel[]> {
+    return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get');
+  }
+
+  /**
    * Method to get the count of all Marque
    */
   countAllMarque(): Observable<number> {
