@@ -18,14 +18,14 @@ export class MotoService {
    * @param slug Slug of moto
    */
   getOneMoto(slug: string): Observable<MotoModel> {
-    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get/slug/' + slug);
+    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get/' + slug);
   }
 
   /**
    * Method to get all moto
    */
-  getAllMoto(): Observable<MotoModel[]> {
-    return this.http.get<MotoModel[]>(environment.apiBaseUrl + '/moto/get');
+  getAllMoto(page: number): Observable<MotoModel[]> {
+    return this.http.get<MotoModel[]>(environment.apiBaseUrl + '/moto/get/page/' + page);
   }
 
   /**

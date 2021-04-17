@@ -10,11 +10,12 @@ import {MotoModel} from '../../../models/moto-model';
 export class MotoListComponent implements OnInit {
 
   motoList: MotoModel[];
+  pageNumber = 0;
 
   constructor(private service: MotoService) { }
 
   ngOnInit(): void {
-    this.service.getAllMoto().subscribe(res => {
+    this.service.getAllMoto(this.pageNumber).subscribe(res => {
       this.motoList = res;
     });
   }
