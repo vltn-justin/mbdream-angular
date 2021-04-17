@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {MotoModel} from '../models/moto-model';
+import {MotoForm, MotoModel} from '../models/moto-model';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -11,7 +11,8 @@ export class MotoService {
 
   private moto: MotoModel;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /**
    * Method to get One Moto from database
@@ -26,6 +27,16 @@ export class MotoService {
    */
   getAllMoto(page: number): Observable<MotoModel[]> {
     return this.http.get<MotoModel[]>(environment.apiBaseUrl + '/moto/get/page/' + page);
+  }
+
+  /**
+   * Method to add a new moto
+   * @param newMoto MotoForm, with all data for new moto
+   */
+  addMoto(newMoto: MotoForm): Observable<string> {
+    return this.http.post(environment.apiBaseUrl + '/moto/add-moto', newMoto, {
+      responseType: 'text'
+    });
   }
 
   /**
