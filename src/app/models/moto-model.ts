@@ -1,3 +1,13 @@
+// Used for adding/updating moto
+export class MotoForm {
+  constructor(private nomMoto: string,
+              private descriptionMoto: string,
+              private isFeatured: boolean,
+              private slugMarque: string,
+              private slugCategorie: string) {
+  }
+}
+
 export interface MotoModel {
   slugMoto: string;
   nomMoto: string;
