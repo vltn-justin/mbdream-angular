@@ -3,20 +3,20 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {InfoModel} from '../models/info-model';
 import {environment} from '../../environments/environment';
+import {CategorieModel} from '../models/categorie-model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InfoService {
+export class CategorieService {
 
   constructor(private http: HttpClient) {
   }
 
   /**
-   * Method to get info of a moto with is slug
-   * @param slugMoto Slug of moto
+   * Method to get all categories
    */
-  getInfoMoto(slugMoto: string): Observable<InfoModel> {
-    return this.http.get<InfoModel>(environment.apiBaseUrl + '/info/get/moto/' + slugMoto);
+  getAllCategories(): Observable<CategorieModel[]> {
+    return this.http.get<CategorieModel[]>(environment.apiBaseUrl + 'category/get');
   }
 }
