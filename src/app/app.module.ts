@@ -17,6 +17,7 @@ import { VideosComponent } from './components/moto/moto/videos/videos.component'
 import { CommentairesComponent } from './components/moto/moto/commentaires/commentaires.component';
 import { InfosComponent } from './components/moto/moto/infos/infos.component';
 import {FormsModule} from '@angular/forms';
+import { MotoAddComponent } from './components/moto/moto-add/moto-add.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {FormsModule} from '@angular/forms';
     VideosComponent,
     CommentairesComponent,
     InfosComponent,
+    MotoAddComponent,
   ],
     imports: [
         BrowserModule,
