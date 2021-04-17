@@ -1,24 +1,25 @@
-export interface InfoModel {
-  idInfo: number;
-  prix: number;
-  architectureMoteur: string;
-  cylindre: string;
-  puissance: number;
-  couple: number;
-  poid: number;
-  capaciteReservoir: number;
-  consommation: number;
+export interface CategorieModel {
+  nomCategorie: string;
+  slugCategorie: string;
+  nbMoto: number;
+  motos: Moto[];
+}
+
+export interface Moto {
+  slugMoto: string;
+  nomMoto: string;
+  backgroundImgMoto: string;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toInfoModel(json: string): InfoModel {
-    return cast(JSON.parse(json), r('InfoModel'));
+  public static toCategorieModel(json: string): CategorieModel {
+    return cast(JSON.parse(json), r('CategorieModel'));
   }
 
-  public static infoModelToJson(value: InfoModel): string {
-    return JSON.stringify(uncast(value, r('InfoModel')), null, 2);
+  public static categorieModelToJson(value: CategorieModel): string {
+    return JSON.stringify(uncast(value, r('CategorieModel')), null, 2);
   }
 }
 
@@ -172,15 +173,15 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  'InfoModel': o([
-    {json: 'idInfo', js: 'idInfo', typ: 0},
-    {json: 'prix', js: 'prix', typ: 0},
-    {json: 'architectureMoteur', js: 'architectureMoteur', typ: ''},
-    {json: 'cylindre', js: 'cylindre', typ: ''},
-    {json: 'puissance', js: 'puissance', typ: 0},
-    {json: 'couple', js: 'couple', typ: 0},
-    {json: 'poid', js: 'poid', typ: 0},
-    {json: 'capaciteReservoir', js: 'capaciteReservoir', typ: 3.14},
-    {json: "consommation", js: "consommation", typ: 3.14},
+  'CategorieModel': o([
+    {json: 'nomCategorie', js: 'nomCategorie', typ: ''},
+    {json: 'slugCategorie', js: 'slugCategorie', typ: ''},
+    {json: 'nbMoto', js: 'nbMoto', typ: 0},
+    {json: 'motos', js: 'motos', typ: a(r('Moto'))},
+  ], false),
+  'Moto': o([
+    {json: 'slugMoto', js: 'slugMoto', typ: ''},
+    {json: 'nomMoto', js: 'nomMoto', typ: ''},
+    {json: "backgroundImgMoto", js: "backgroundImgMoto", typ: ""},
   ], false),
 };
