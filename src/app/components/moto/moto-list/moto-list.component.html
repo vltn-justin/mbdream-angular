@@ -7,7 +7,7 @@
 <div id="listMoto" *ngIf="motoList?.length > 0 else noMoto">
   <div id="oneMoto" *ngFor="let moto of motoList">
     <figure>
-      <img src="{{moto.backgroundImgMoto}}" alt="{{moto.nomMoto}}">
+      <img *ngIf="moto.backgroundImgMoto !== null" src="{{moto.backgroundImgMoto}}" alt="{{moto.nomMoto}}">
     </figure>
 
     <p>{{moto.nomMoto}}</p>
