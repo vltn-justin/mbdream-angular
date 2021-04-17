@@ -1,1 +1,67 @@
-<p>moto-add works!</p>
+<p id="titleForm">Ajouter une moto</p>
+
+<div *ngIf="errorMsg">
+  <p>{{errorMsg}}</p>
+</div>
+
+<div *ngIf="statusMsg">
+  <p>
+    {{statusMsg[0]}} - <a routerLink="/moto/{{statusMsg[1]}}">Voir la moto</a>
+  </p>
+</div>
+
+<form [formGroup]="addMotoForm" (ngSubmit)="addingMoto()">
+  <div id="nomForm">
+    <label for="nomMoto">Nom :</label>
+    <input type="text" id="nomMoto" formControlName="nomMoto" placeholder="Nom de la moto">
+  </div>
+
+  <div id="nomError" class="errorsForm" *ngIf="nomMoto.invalid && (nomMoto.touched || nomMoto.dirty)">
+    <div *ngIf="nomMoto.errors?.required">
+      Le nom de la moto est requis
+    </div>
+  </div>
+
+  <div id="descForm">
+    <label for="descMoto">Description :</label>
+    <textarea id="descMoto" formControlName="descriptionMoto" placeholder="Description de la moto" rows="10"></textarea>
+  </div>
+
+  <div id="descError" class="errorsForm" *ngIf="descriptionMoto.invalid && (descriptionMoto.touched || descriptionMoto.dirty)">
+    <div *ngIf="descriptionMoto.errors?.required">
+      La description de la moto est requise
+    </div>
+  </div>
+
+  <div id="marqueForm">
+    <label for="marqueMoto">Marque :</label>
+    <select name="marqueMoto" id="marqueMoto" formControlName="slugMarque" >
+        <option *ngFor="let marque of marques" value="{{marque.slugMarque}}">{{marque.nomMarque}}</option>
+    </select>
+  </div>
+
+  <div id="marqueError" class="errorsForm" *ngIf="slugMarque.invalid && (slugMarque.touched || slugMarque.dirty)">
+    <div *ngIf="slugMarque.errors?.required">
+      La marque de la moto est requise
+    </div>
+  </div>
+
+  <div id="cateForm">
+    <label for="categoryForm">Catégorie :</label>
+    <select name="categoryForm" id="categoryForm" formControlName="slugCategorie" >
+      <option *ngFor="let categorie of categories" value="{{categorie.slugCategorie}}">{{categorie.nomCategorie}}</option>
+    </select>
+  </div>
+
+  <div id="categoryError" class="errorsForm" *ngIf="slugCategorie.invalid && (slugCategorie.touched || slugCategorie.dirty)">
+    <div *ngIf="slugCategorie.errors?.required">
+      La catégorie de la moto est requise
+    </div>
+  </div>
+
+  <div id="btnForm">
+    <button type="submit" [disabled]="!addMotoForm.valid">
+      Ajouter la moto
+    </button>
+  </div>
+</form>

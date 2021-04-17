@@ -1,0 +1,46 @@
+#titleForm
+  text-align: center
+  font-size: 2.5rem
+  font-weight: bold
+form
+  margin: 1rem
+  border: 1px solid #051622
+  border-radius: 25px
+  box-shadow: 8px 8px 12px #aaa
+  background-color: #18191c
+  padding: 0 1rem
+  color: white
+  #nomForm, #descForm, #marqueForm, #cateForm, #btnForm
+    width: 100%
+    margin: 1rem 0
+    display: flex
+    justify-content: center
+    align-items: center
+    label
+      width: 20%
+      text-align: left
+      font-weight: bolder
+    input, textarea, select
+      width: 80%
+      padding: 5px 10px
+    input, select
+      height: 30px
+    textarea
+      resize: none
+    button
+      padding: 20px
+      width: 30%
+      background-color: #ff6347
+      color: white
+      text-align: center
+      border-radius: 5px
+      border: 1px solid transparent
+      &:hover
+        cursor: pointer
+        background-color: #ff5030
+      &:disabled
+        background-color: lightgrey
+  .errorsForm
+    text-align: center
+    font-weight: bold
+    color: red
