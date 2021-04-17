@@ -16,7 +16,7 @@ import { ImagesComponent } from './components/moto/moto/images/images.component'
 import { VideosComponent } from './components/moto/moto/videos/videos.component';
 import { CommentairesComponent } from './components/moto/moto/commentaires/commentaires.component';
 import { InfosComponent } from './components/moto/moto/infos/infos.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MotoAddComponent } from './components/moto/moto-add/moto-add.component';
 
 @NgModule({
@@ -35,13 +35,14 @@ import { MotoAddComponent } from './components/moto/moto-add/moto-add.component'
     InfosComponent,
     MotoAddComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        FontAwesomeModule,
-        FormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
