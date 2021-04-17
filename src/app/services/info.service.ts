@@ -17,6 +17,6 @@ export class InfoService {
    * @param slugMoto Slug of moto
    */
   getInfoMoto(slugMoto: string): Observable<InfoModel> {
-    return this.http.get<InfoModel>(environment.apiBaseUrl + '/info/get/moto/' + slugMoto);
+    return this.http.get<InfoModel>(environment.apiBaseUrl + '/info/get/' + slugMoto);
   }
 }
