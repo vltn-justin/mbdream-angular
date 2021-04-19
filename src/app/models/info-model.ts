@@ -1,5 +1,6 @@
 export class InfoForm {
-  constructor(private prix: string,
+  constructor(private slugMoto: string,
+              private prix: string,
               private architectureMoteur: string,
               private cylindre: number,
               private puissance: number,
