@@ -5,7 +5,17 @@
   </button>
 </div>
 
-<ng-container  *ngIf="info !== undefined || onEdit else noInfos">
+<div class="msgFrom" id="errorMsgForm" *ngIf="errorMsg">
+  <p>{{errorMsg}}</p>
+</div>
+
+<div class="msgFrom" id="successMsgForm" *ngIf="successMsg">
+  <p>
+    {{successMsg}}
+  </p>
+</div>
+
+<ng-container  *ngIf="info !== undefined || onEdit">
   <form [formGroup]="addUpdateInfos" (ngSubmit)="addingUpdatingInfos()">
     <table>
       <thead>
@@ -168,7 +178,3 @@
 
   </form>
 </ng-container>
-
-<ng-template #noInfos>
-  {{errorMsg}}
-</ng-template>
