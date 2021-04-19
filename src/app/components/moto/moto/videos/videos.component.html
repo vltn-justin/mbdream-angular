@@ -2,7 +2,7 @@
   <details>
     <summary>{{texteVideo}}</summary>
 
-    <iframe id="previewVideo" [src]="urlSafe"></iframe>
+    <iframe *ngIf="url.length > 30" id="previewVideo" [src]="urlSafe" [style.display]="url.length > 30 ? 'block' : 'none'"></iframe>
 
     <input [(ngModel)]="url" type="text" id="inputUrlVideo" name="inputUrlVideo" (input)="onLinkChange($event)" placeholder="URL Video /!\ Youtube = lien embed">
 

@@ -46,12 +46,13 @@ export class VideosComponent implements OnInit {
    * @param event Event when input change
    */
   onLinkChange(event): void {
-    if (this.url.length > 0) {
+    // 30 because it's length of youtube link with embded
+    if (this.url.length > 30) {
       this.urlSafe = this.sanitizeURL(event.target.value);
-      document.getElementById('previewVideo').style.display = 'block';
+      // document.getElementById('previewVideo').style.display = 'block';
     } else {
-      this.url = '';
-      document.getElementById('previewVideo').style.display = 'none';
+      this.urlSafe = '';
+      // document.getElementById('previewVideo').style.display = 'none';
     }
   }
 
