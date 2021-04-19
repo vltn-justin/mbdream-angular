@@ -1,99 +1,172 @@
-<ng-container  *ngIf="info !== undefined else noInfos">
-  <table>
-    <thead>
-      <tr>
-        <th>
-          Info
-        </th>
+<div id="btnAddUpdate">
+  <button type="button" (click)="setFormInfos()">
+    <ng-container *ngIf="info !== undefined else addInfos">Mettre à jour les informations</ng-container>
+    <ng-template #addInfos>Ajouter des informations</ng-template>
+  </button>
+</div>
 
-        <th>
-          Valeur
-        </th>
-      </tr>
-    </thead>
+<ng-container  *ngIf="info !== undefined || onEdit else noInfos">
+  <form [formGroup]="addUpdateInfos" (ngSubmit)="addingUpdatingInfos()">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Info
+          </th>
 
-    <tbody>
-      <tr>
-        <td>
-          Prix
-        </td>
+          <th>
+            Valeur
+          </th>
+        </tr>
+      </thead>
 
-        <td>
-          {{info.prix}} €
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>
+            Prix
+          </td>
 
-      <tr>
-        <td>
-          Architecture moteur
-        </td>
+          <td>
+            <div *ngIf="onEdit else showInfosPrix">
+              <input type="text" formControlName="prix" id="prix">
+              <label for="prix">€</label>
+            </div>
 
-        <td>
-          {{info.architectureMoteur}}
-        </td>
-      </tr>
+            <ng-template #showInfosPrix>
+              {{info.prix}} €
+            </ng-template>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          Cylindré
-        </td>
+        <tr>
+          <td>
+            Architecture moteur
+          </td>
 
-        <td>
-          {{info.cylindre}} cm3
-        </td>
-      </tr>
+          <td>
+            <div *ngIf="onEdit else showInfosMoteur">
+              <input type="text" formControlName="architectureMoteur" id="architectureMoteur">
+              <label for="architectureMoteur"></label>
+            </div>
 
-      <tr>
-        <td>
-          Puissance
-        </td>
+            <ng-template #showInfosMoteur>
+              {{info.architectureMoteur}}
+            </ng-template>
+          </td>
+        </tr>
 
-        <td>
-          {{info.puissance}} ch
-        </td>
-      </tr>
+        <tr>
+          <td>
+            Cylindré
+          </td>
 
-      <tr>
-        <td>
-          Couple
-        </td>
+          <td>
+            <div *ngIf="onEdit else showInfosCylindre">
+              <input type="text" formControlName="cylindre" id="cylindre">
+              <label for="cylindre">cm3</label>
+            </div>
 
-        <td>
-          {{info.couple}} nM
-        </td>
-      </tr>
+            <ng-template #showInfosCylindre>
+              {{info.cylindre}} cm3
+            </ng-template>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          Poid
-        </td>
+        <tr>
+          <td>
+            Puissance
+          </td>
 
-        <td>
-          {{info.poid}} KG
-        </td>
-      </tr>
+          <td>
+            <div *ngIf="onEdit else showInfosPuissance">
+              <input type="text" formControlName="puissance" id="puissance">
+              <label for="puissance">ch</label>
+            </div>
 
-      <tr>
-        <td>
-          Capacité Reservoir
-        </td>
+            <ng-template #showInfosPuissance>
+              {{info.puissance}} ch
+            </ng-template>
+          </td>
+        </tr>
 
-        <td>
-          {{info.capaciteReservoir}} L
-        </td>
-      </tr>
+        <tr>
+          <td>
+            Couple
+          </td>
 
-      <tr>
-        <td>
-          Consommation
-        </td>
+          <td>
+            <div *ngIf="onEdit else showInfosCouple">
+              <input type="text" formControlName="couple" id="couple">
+              <label for="couple">nM</label>
+            </div>
 
-        <td>
-          {{info.consommation}} L/100
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <ng-template #showInfosCouple>
+              {{info.couple}} nM
+            </ng-template>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Poid
+          </td>
+
+          <td>
+            <div *ngIf="onEdit else showInfosPoid">
+              <input type="text" formControlName="poid" id="poid">
+              <label for="poid">KG</label>
+            </div>
+
+            <ng-template #showInfosPoid>
+              {{info.poid}} KG
+            </ng-template>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Capacité Reservoir
+          </td>
+
+          <td>
+            <div *ngIf="onEdit else showInfosReservoir">
+              <input type="text" formControlName="capaciteReservoir" id="capaciteReservoir">
+              <label for="capaciteReservoir">L</label>
+            </div>
+
+            <ng-template #showInfosReservoir>
+              {{info.capaciteReservoir}} L
+            </ng-template>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Consommation
+          </td>
+
+          <td>
+            <div *ngIf="onEdit else showInfosConso">
+              <input type="text" formControlName="consommation" id="consommation">
+              <label for="consommation">L/100</label>
+            </div>
+
+            <ng-template #showInfosConso>
+              {{info.consommation}} L/100
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="btnForm" *ngIf="onEdit">
+      <button type="submit" [disabled]="!addUpdateInfos.valid">
+        <ng-container *ngIf="info !== undefined else addInfos">Mettre à jour</ng-container>
+        <ng-template #addInfos>Ajouter</ng-template>
+      </button>
+    </div>
+
+  </form>
 </ng-container>
 
 <ng-template #noInfos>
