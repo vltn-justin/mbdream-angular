@@ -1,3 +1,16 @@
+export class InfoForm {
+  constructor(private prix: string,
+              private architectureMoteur: string,
+              private cylindre: number,
+              private puissance: number,
+              private couple: number,
+              private poid: number,
+              private capaciteReservoir: number,
+              private consommation: number,
+              ) {
+  }
+}
+
 export interface InfoModel {
   idInfo: number;
   prix: number;
