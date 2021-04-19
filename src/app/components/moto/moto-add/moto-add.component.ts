@@ -27,7 +27,10 @@ export class MotoAddComponent implements OnInit {
     slugCategorie: new FormControl('', [Validators.required]),
   });
 
-  constructor(private formBuilder: FormBuilder, private serviceMoto: MotoService, private marqueService: MarqueService, private categorieService: CategorieService) { }
+  constructor(private formBuilder: FormBuilder,
+              private serviceMoto: MotoService,
+              private marqueService: MarqueService,
+              private categorieService: CategorieService) { }
 
   ngOnInit(): void {
     // Get all marques for form
@@ -51,6 +54,8 @@ export class MotoAddComponent implements OnInit {
 
     this.serviceMoto.addMoto(newMoto).subscribe(res => {
       this.statusMsg = res.split('- ');
+    }, error => {
+      this.errorMsg = error.error.text;
     });
   }
 

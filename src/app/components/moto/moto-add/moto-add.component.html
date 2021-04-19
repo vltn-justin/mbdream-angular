@@ -1,10 +1,10 @@
 <p id="titleForm">Ajouter une moto</p>
 
-<div *ngIf="errorMsg">
+<div class="msgFrom" id="errorMsgForm" *ngIf="errorMsg">
   <p>{{errorMsg}}</p>
 </div>
 
-<div *ngIf="statusMsg">
+<div class="msgFrom" id="successMsgForm" *ngIf="statusMsg">
   <p>
     {{statusMsg[0]}} - <a routerLink="/moto/{{statusMsg[1]}}">Voir la moto</a>
   </p>
