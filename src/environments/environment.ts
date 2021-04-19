@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://chamalo-web.ddns.net:16650/',
+  apiBaseUrl: 'https://motorbike-dream.herokuapp.com/',
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebase : {
     apiKey: 'IzaSyBv6smx-BCmkvwDV3qQUSG0dCwtQUyFfpY',
