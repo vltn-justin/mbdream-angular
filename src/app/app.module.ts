@@ -11,13 +11,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {FourOhFourComponent} from './components/four-oh-four/four-oh-four.component';
 import {MotoComponent} from './components/moto/moto/moto.component';
 import {MotoListComponent} from './components/moto/moto-list/moto-list.component';
-import { DescriptionComponent } from './components/moto/moto/description/description.component';
-import { ImagesComponent } from './components/moto/moto/images/images.component';
-import { VideosComponent } from './components/moto/moto/videos/videos.component';
-import { CommentairesComponent } from './components/moto/moto/commentaires/commentaires.component';
-import { InfosComponent } from './components/moto/moto/infos/infos.component';
+import {DescriptionComponent} from './components/moto/moto/description/description.component';
+import {ImagesComponent} from './components/moto/moto/images/images.component';
+import {VideosComponent} from './components/moto/moto/videos/videos.component';
+import {InfosComponent} from './components/moto/moto/infos/infos.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MotoAddComponent } from './components/moto/moto-add/moto-add.component';
+import {MotoAddComponent} from './components/moto/moto-add/moto-add.component';
+import {ForumComponent} from './components/moto/moto/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import { MotoAddComponent } from './components/moto/moto-add/moto-add.component'
     DescriptionComponent,
     ImagesComponent,
     VideosComponent,
-    CommentairesComponent,
     InfosComponent,
     MotoAddComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ import {DescriptionComponent} from './description/description.component';
 import {InfosComponent} from './infos/infos.component';
 import {ImagesComponent} from './images/images.component';
 import {VideosComponent} from './videos/videos.component';
-import {CommentairesComponent} from './commentaires/commentaires.component';
+import {ForumComponent} from './forum/forum.component';
 
 @Component({
   selector: 'app-moto',
@@ -37,7 +37,7 @@ export class MotoComponent implements OnInit {
     infos: InfosComponent,
     images: ImagesComponent,
     videos: VideosComponent,
-    comments: CommentairesComponent
+    forum: ForumComponent
   };
 
   constructor(private route: ActivatedRoute,
