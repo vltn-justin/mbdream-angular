@@ -29,11 +29,14 @@
         background-color: wheat
         @media screen and (min-width: 1200px)
           img
+            width: 100%
+            height: auto
             position: absolute
             top: -100%
-        img
-          width: 100%
-          height: auto
+        @media screen and (max-width: 1200px)
+          img
+            width: 100%
+            height: inherit
   #navTabMoto
     width: 100%
     height: auto
