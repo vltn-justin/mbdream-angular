@@ -40,6 +40,16 @@ export class MotoService {
   }
 
   /**
+   * Method to update a moto
+   * @param newMoto Moto with new data
+   */
+  updateMoto(newMoto: MotoForm): Observable<string> {
+    return this.http.post(environment.apiBaseUrl + '/moto/update', newMoto, {
+      responseType: 'text'
+    });
+  }
+
+  /**
    * Method to get the count of all Moto
    */
   countAllMoto(): Observable<number> {
