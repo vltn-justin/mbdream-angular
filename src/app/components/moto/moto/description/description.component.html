@@ -5,11 +5,57 @@
   </button>
 </div>
 
+<div class="msgFrom" id="errorMsgDesc" *ngIf="errorMsg">
+  <p>{{errorMsg}}</p>
+</div>
+
+<div class="msgFrom" id="successMsgDesc" *ngIf="successMsg">
+  <p>
+    {{successMsg}}
+  </p>
+</div>
+
 <ng-container *ngIf="moto?.descriptionMoto || onEdit else noDescription">
   <ng-container *ngIf="onEdit else description">
-    <quill-editor [formControl]="control"></quill-editor>
+    <form [formGroup]="descriptionForm" (ngSubmit)="saveDesc()">
+      <div id="selectorsDesc">
+        <div class="selector">
+          <div id="marqueDescForm">
+            <label for="marqueMoto">Marque :</label>
+            <select name="marqueMoto" id="marqueMoto" formControlName="slugMarque" >
+              <option *ngFor="let marque of marques" value="{{marque.slugMarque}}">{{marque.nomMarque}}</option>
+            </select>
+          </div>
 
-    <button type="button" (click)="saveDesc()" [disabled]="!control.valid">Sauvegarder</button>
+          <div id="marqueError" class="errorsForm" *ngIf="slugMarque.invalid && (slugMarque.touched || slugMarque.dirty)">
+            <div *ngIf="slugMarque.errors?.required">
+              La marque de la moto est requise
+            </div>
+          </div>
+        </div>
+
+        <div class="selector">
+          <div id="cateDescForm">
+            <label for="categoryForm">Catégorie :</label>
+            <select name="categoryForm" id="categoryForm" formControlName="slugCategorie" >
+              <option *ngFor="let categorie of categories" value="{{categorie.slugCategorie}}">{{categorie.nomCategorie}}</option>
+            </select>
+          </div>
+
+          <div id="categoryError" class="errorsForm" *ngIf="slugCategorie.invalid && (slugCategorie.touched || slugCategorie.dirty)">
+            <div *ngIf="slugCategorie.errors?.required">
+              La catégorie de la moto est requise
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <quill-editor formControlName="descriptionMoto" class="content-editor" [modules]="" [styles]="{'min-height':'225px'}"></quill-editor>
+
+      <div id="btnDesc">
+        <button type="submit" [disabled]="!descriptionForm.valid">Sauvegarder</button>
+      </div>
+    </form>
   </ng-container>
 
   <ng-template #description>

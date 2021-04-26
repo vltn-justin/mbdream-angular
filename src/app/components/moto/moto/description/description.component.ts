@@ -1,8 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MotoForm, MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
-import {QuillModule} from 'ngx-quill';
-import {FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {MarqueService} from '../../../../services/marque.service';
+import {CategorieService} from '../../../../services/categorie.service';
+import {MarqueModel} from '../../../../models/marque-model';
+import {CategorieModel} from '../../../../models/categorie-model';
 
 @Component({
   selector: 'app-description',
@@ -12,19 +15,29 @@ import {FormControl, Validators} from '@angular/forms';
 export class DescriptionComponent implements OnInit {
 
   moto: MotoModel;
+  marques: MarqueModel[];
+  categories: CategorieModel[];
 
   onEdit = false;
-  @Input() control: FormControl;
+  firstEdit = true;
+
+  descriptionForm = this.formBuilder.group({
+    descriptionMoto: new FormControl('', [Validators.required]),
+    slugMarque: new FormControl('', [Validators.required]),
+    slugCategorie: new FormControl('', [Validators.required]),
+  });
 
   errorMsg: string;
-  statusMsg: string;
+  successMsg: string;
 
-  constructor(private motoService: MotoService) {
+  constructor(private formBuilder: FormBuilder,
+              private motoService: MotoService,
+              private marqueService: MarqueService,
+              private categoryService: CategorieService) {
   }
 
   ngOnInit(): void {
     this.moto = this.motoService.getSavedMoto();
-    this.control = this.control ?? new FormControl(this.moto.descriptionMoto, [Validators.required]);
   }
 
   /**
@@ -32,6 +45,23 @@ export class DescriptionComponent implements OnInit {
    */
   setEditorDesc(): void {
     this.onEdit = !this.onEdit;
+
+    // If it's first edit we get marque & categories
+    if (this.firstEdit) {
+      this.marqueService.getAllMarques().subscribe(res => {
+        this.marques = res;
+      });
+
+      this.categoryService.getAllCategories().subscribe(res => {
+        this.categories = res;
+      });
+
+      this.descriptionMoto.setValue(this.moto.descriptionMoto);
+      this.slugCategorie.setValue(this.moto.categorie.slugCategorie);
+      this.slugMarque.setValue(this.moto.marque.slugMarque);
+
+      this.firstEdit = false;
+    }
   }
 
   /**
@@ -39,16 +69,21 @@ export class DescriptionComponent implements OnInit {
    */
   saveDesc(): void {
     const updatedMoto = new MotoForm(this.moto.nomMoto,
-      this.control.value,
+      this.descriptionMoto.value,
       false,
-      this.moto.marque.slugMarque,
-      this.moto.categorie.slugCategorie,
+      this.slugMarque.value,
+      this.slugCategorie.value,
       this.moto.slugMoto);
 
     this.motoService.updateMoto(updatedMoto).subscribe(res => {
-      this.statusMsg = res;
+      this.successMsg = res;
+      this.onEdit = false;
     }, error => {
       this.errorMsg = error.error.text;
     });
   }
+
+  get descriptionMoto(): AbstractControl { return this.descriptionForm.get('descriptionMoto'); }
+  get slugMarque(): AbstractControl { return this.descriptionForm.get('slugMarque'); }
+  get slugCategorie(): AbstractControl { return this.descriptionForm.get('slugCategorie'); }
 }
