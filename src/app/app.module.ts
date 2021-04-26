@@ -18,6 +18,7 @@ import {InfosComponent} from './components/moto/moto/infos/infos.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MotoAddComponent} from './components/moto/moto-add/moto-add.component';
 import {ForumComponent} from './components/moto/moto/forum/forum.component';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {ForumComponent} from './components/moto/moto/forum/forum.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
