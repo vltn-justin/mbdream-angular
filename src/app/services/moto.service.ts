@@ -34,7 +34,7 @@ export class MotoService {
    * @param newMoto MotoForm, with all data for new moto
    */
   addMoto(newMoto: MotoForm): Observable<string> {
-    return this.http.post(environment.apiBaseUrl + '/moto/add-moto', newMoto, {
+    return this.http.post(environment.apiBaseUrl + '/moto/add', newMoto, {
       responseType: 'text'
     });
   }
@@ -45,7 +45,7 @@ export class MotoService {
    */
   updateMoto(newMoto: MotoForm): Observable<string> {
     return this.http.post(environment.apiBaseUrl + '/moto/update', newMoto, {
-      responseType: 'text'
+      responseType: 'text',
     });
   }
 
