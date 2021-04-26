@@ -43,7 +43,19 @@ import {QuillModule} from 'ngx-quill';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot({
+      modules : {
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ color: [] }, { background: [] }],
+          ['link'],
+          ['clean'],
+        ],
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
