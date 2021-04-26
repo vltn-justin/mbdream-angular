@@ -4,7 +4,8 @@ export class MotoForm {
               private descriptionMoto: string,
               private isFeatured: boolean,
               private slugMarque: string,
-              private slugCategorie: string) {
+              private slugCategorie: string,
+              private slugMoto?: string) {
   }
 }
 
