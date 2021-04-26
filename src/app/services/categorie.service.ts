@@ -17,6 +17,6 @@ export class CategorieService {
    * Method to get all categories
    */
   getAllCategories(): Observable<CategorieModel[]> {
-    return this.http.get<CategorieModel[]>(environment.apiBaseUrl + 'category/get');
+    return this.http.get<CategorieModel[]>(environment.apiBaseUrl + '/category/get');
   }
 }
