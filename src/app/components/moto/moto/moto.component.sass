@@ -22,14 +22,16 @@
       margin: 1rem 0
       figure
         width: 100%
-        border: 1px solid black
         height: inherit
+        border: 1px solid black
         overflow: hidden
         position: relative
         background-color: wheat
+        @media screen and (min-width: 1200px)
+          img
+            position: absolute
+            top: -100%
         img
-          position: absolute
-          top: -14rem
           width: 100%
           height: auto
   #navTabMoto
