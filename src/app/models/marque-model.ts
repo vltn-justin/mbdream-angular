@@ -11,7 +11,6 @@ export class MarqueForm {
 export interface MarqueModel {
   nomMarque: string;
   slugMarque: string;
-  nbMoto: number;
   logoMarque: string;
   dateCreation: Date;
   descriptionMarque: string;
@@ -22,6 +21,18 @@ export interface Moto {
   slugMoto: string;
   nomMoto: string;
   backgroundImgMoto: string;
+  categorie: Categorie;
+  marque: Marque;
+}
+
+export interface Categorie {
+  nomCategorie: string;
+  slugCategorie: string;
+}
+
+export interface Marque {
+  nomMarque: string;
+  slugMarque: string;
 }
 
 // Converts JSON strings to/from your types
@@ -189,7 +200,6 @@ const typeMap: any = {
   'MarqueModel': o([
     {json: 'nomMarque', js: 'nomMarque', typ: ''},
     {json: 'slugMarque', js: 'slugMarque', typ: ''},
-    {json: 'nbMoto', js: 'nbMoto', typ: 0},
     {json: 'logoMarque', js: 'logoMarque', typ: ''},
     {json: 'dateCreation', js: 'dateCreation', typ: Date},
     {json: 'descriptionMarque', js: 'descriptionMarque', typ: ''},
@@ -198,6 +208,16 @@ const typeMap: any = {
   'Moto': o([
     {json: 'slugMoto', js: 'slugMoto', typ: ''},
     {json: 'nomMoto', js: 'nomMoto', typ: ''},
-    {json: "backgroundImgMoto", js: "backgroundImgMoto", typ: ""},
+    {json: 'backgroundImgMoto', js: 'backgroundImgMoto', typ: ''},
+    {json: 'categorie', js: 'categorie', typ: r('Categorie')},
+    {json: 'marque', js: 'marque', typ: r('Marque')},
+  ], false),
+  'Categorie': o([
+    {json: 'nomCategorie', js: 'nomCategorie', typ: ''},
+    {json: 'slugCategorie', js: 'slugCategorie', typ: ''},
+  ], false),
+  'Marque': o([
+    {json: 'nomMarque', js: 'nomMarque', typ: ""},
+    {json: "slugMarque", js: "slugMarque", typ: ""},
   ], false),
 };
