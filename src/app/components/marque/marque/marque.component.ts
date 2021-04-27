@@ -3,9 +3,9 @@ import {MarqueService} from '../../../services/marque.service';
 import {MarqueModel} from '../../../models/marque-model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {faAlignLeft, faInfo, faMotorcycle} from '@fortawesome/free-solid-svg-icons';
-import {DescriptionComponent} from './description/description.component';
-import {InfosComponent} from './infos/infos.component';
-import {MotosComponent} from './motos/motos.component';
+import {DescriptionMarqueComponent} from './description-marque/description-marque.component';
+import {InfosMarqueComponent} from './infos-marque/infos-marque.component';
+import {MotosMarqueComponent} from './motos-marque/motos-marque.component';
 
 @Component({
   selector: 'app-marque',
@@ -28,9 +28,9 @@ export class MarqueComponent implements OnInit {
 
   private componentRef: ComponentRef<{}>;
   private componentsMapping = {
-    description: DescriptionComponent,
-    infos: InfosComponent,
-    motos: MotosComponent,
+    description: DescriptionMarqueComponent,
+    infos: InfosMarqueComponent,
+    motos: MotosMarqueComponent,
   };
 
   constructor(private route: ActivatedRoute,

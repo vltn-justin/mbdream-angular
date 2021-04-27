@@ -19,10 +19,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MotoAddComponent} from './components/moto/moto-add/moto-add.component';
 import {ForumComponent} from './components/moto/moto/forum/forum.component';
 import {QuillModule} from 'ngx-quill';
-import { MarqueListComponent } from './components/marque/marque-list/marque-list.component';
-import { MarqueComponent } from './components/marque/marque/marque.component';
-import { MarqueAddComponent } from './components/marque/marque-add/marque-add.component';
-import { MotosComponent } from './components/marque/marque/motos/motos.component';
+import {MarqueListComponent} from './components/marque/marque-list/marque-list.component';
+import {MarqueComponent} from './components/marque/marque/marque.component';
+import {MarqueAddComponent} from './components/marque/marque-add/marque-add.component';
+import {DescriptionMarqueComponent} from './components/marque/marque/description-marque/description-marque.component';
+import {InfosMarqueComponent} from './components/marque/marque/infos-marque/infos-marque.component';
+import {MotosMarqueComponent} from './components/marque/marque/motos-marque/motos-marque.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { MotosComponent } from './components/marque/marque/motos/motos.component
     MarqueListComponent,
     MarqueComponent,
     MarqueAddComponent,
-    MotosComponent,
+    DescriptionMarqueComponent,
+    InfosMarqueComponent,
+    MotosMarqueComponent,
   ],
   imports: [
     BrowserModule,
