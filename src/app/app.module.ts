@@ -19,6 +19,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MotoAddComponent} from './components/moto/moto-add/moto-add.component';
 import {ForumComponent} from './components/moto/moto/forum/forum.component';
 import {QuillModule} from 'ngx-quill';
+import { MarqueListComponent } from './components/marque/marque-list/marque-list.component';
+import { MarqueComponent } from './components/marque/marque/marque.component';
+import { MarqueAddComponent } from './components/marque/marque-add/marque-add.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import {QuillModule} from 'ngx-quill';
     InfosComponent,
     MotoAddComponent,
     ForumComponent,
+    MarqueListComponent,
+    MarqueComponent,
+    MarqueAddComponent,
   ],
   imports: [
     BrowserModule,
