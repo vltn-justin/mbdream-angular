@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {MarqueModel} from '../models/marque-model';
+import {MarqueForm, MarqueModel} from '../models/marque-model';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -33,6 +33,16 @@ export class MarqueService {
    */
   getAllMarques(): Observable<MarqueModel[]> {
     return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get');
+  }
+
+  /**
+   * Method to add a marque
+   * @param newMarque New marque to add
+   */
+  addMarque(newMarque: MarqueForm): Observable<string> {
+    return this.http.post(environment.apiBaseUrl + '/marque/add', newMarque, {
+      responseType: 'text'
+    });
   }
 
   /**
