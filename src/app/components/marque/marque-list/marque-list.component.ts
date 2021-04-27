@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MarqueService} from '../../../services/marque.service';
+import {MarqueModel} from '../../../models/marque-model';
 
 @Component({
   selector: 'app-marque-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarqueListComponent implements OnInit {
 
-  constructor() { }
+  marqueList: MarqueModel[];
+  pageNumber = 0;
+
+  constructor(private marqueService: MarqueService) { }
 
   ngOnInit(): void {
+    this.marqueService.getAllMarques(this.pageNumber).subscribe(res => {
+      this.marqueList = res;
+    });
   }
 
 }

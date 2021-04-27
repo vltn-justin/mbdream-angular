@@ -1,1 +1,23 @@
-<p>marque-list works!</p>
+<div id="addMarqueLink">
+  <a routerLink="/marques/add">
+    <button>Ajoutez une marque</button>
+  </a>
+</div>
+
+<div id="listMoto" *ngIf="marqueList?.length > 0 else noMarque">
+  <div id="oneMoto" *ngFor="let marque of marqueList">
+    <figure>
+      <img *ngIf="marque.logoMarque !== null" src="{{marque.logoMarque}}" alt="{{marque.nomMarque}}">
+    </figure>
+
+    <p>{{marque.nomMarque}}</p>
+
+    <a routerLink="/marques/{{marque.slugMarque}}">
+      <button>Voir la marque</button>
+    </a>
+  </div>
+</div>
+
+<ng-template #noMarque>
+  Pas de marque
+</ng-template>
