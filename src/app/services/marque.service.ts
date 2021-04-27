@@ -9,15 +9,17 @@ import {environment} from '../../environments/environment';
 })
 export class MarqueService {
 
+  marque: MarqueModel;
+
   constructor(private http: HttpClient) {
   }
 
   /**
    * Method to get One marque from database
-   * @param id Id of marque
+   * @param slug Slug of marque
    */
-  getOneMarque(id: string): Observable<MarqueModel> {
-    return this.http.get<MarqueModel>(environment.apiBaseUrl + '/marque/get/' + id);
+  getOneMarque(slug: string): Observable<MarqueModel> {
+    return this.http.get<MarqueModel>(environment.apiBaseUrl + '/marque/get/' + slug);
   }
 
   /**
@@ -50,5 +52,20 @@ export class MarqueService {
    */
   countAllMarque(): Observable<number> {
     return this.http.get<number>(environment.apiBaseUrl + '/marque/count');
+  }
+
+  /**
+   * Method used to share data of marque to different components for marque component
+   * @param marque Marque to save
+   */
+  saveOneMarque(marque: MarqueModel): void {
+    this.marque = marque;
+  }
+
+  /**
+   * Method to recover saved marque
+   */
+  getSavedMarque(): MarqueModel {
+    return this.marque;
   }
 }
