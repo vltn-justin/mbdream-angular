@@ -197,7 +197,7 @@ const typeMap: any = {
   ], false),
   'Moto': o([
     {json: 'idMoto', js: 'idMoto', typ: 0},
-    {json: 'slugMoto', js: "slugMoto", typ: ""},
-    {json: "nomMoto", js: "nomMoto", typ: ""},
+    {json: 'slugMoto', js: 'slugMoto', typ: ''},
+    {json: 'nomMoto', js: 'nomMoto', typ: ''},
   ], false),
 };
