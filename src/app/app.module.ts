@@ -22,6 +22,7 @@ import {QuillModule} from 'ngx-quill';
 import { MarqueListComponent } from './components/marque/marque-list/marque-list.component';
 import { MarqueComponent } from './components/marque/marque/marque.component';
 import { MarqueAddComponent } from './components/marque/marque-add/marque-add.component';
+import { MotosComponent } from './components/marque/marque/motos/motos.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MarqueAddComponent } from './components/marque/marque-add/marque-add.co
     MarqueListComponent,
     MarqueComponent,
     MarqueAddComponent,
+    MotosComponent,
   ],
   imports: [
     BrowserModule,
