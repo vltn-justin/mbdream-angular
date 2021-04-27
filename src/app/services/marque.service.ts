@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MarqueModel} from '../models/marque-model';
 import {environment} from '../../environments/environment';
-import {MotoModel} from '../models/moto-model';
 
 @Injectable({
   providedIn: 'root'
