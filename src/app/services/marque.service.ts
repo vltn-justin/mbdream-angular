@@ -23,8 +23,8 @@ export class MarqueService {
   /**
    * Method to get all marques
    */
-  getAllMarques(): Observable<MarqueModel[]> {
-    return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get');
+  getAllMarques(page: number): Observable<MarqueModel[]> {
+    return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get/page/' + page);
   }
 
   /**
