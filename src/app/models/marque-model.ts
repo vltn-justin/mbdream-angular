@@ -1,3 +1,13 @@
+// Used for adding/updating marque
+export class MarqueForm {
+  constructor(private nomMarque: string,
+              private descriptionMarque: string,
+              private dateCreation: string,
+              private logoMarque: string,
+              private slugMarque?: string) {
+  }
+}
+
 export interface MarqueModel {
   idMarque: number;
   slugMarque: string;
