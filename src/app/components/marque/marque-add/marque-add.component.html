@@ -1,1 +1,66 @@
-<p>marque-add works!</p>
+<p id="titleForm">Ajouter une marque</p>
+
+<div class="msgFrom" id="errorMsgForm" *ngIf="errorMsg">
+  <p>{{errorMsg}}</p>
+</div>
+
+<div class="msgFrom" id="successMsgForm" *ngIf="statusMsg">
+  <p>
+    {{statusMsg[0]}} - <a routerLink="/marques/{{statusMsg[1]}}">Voir la marque</a>
+  </p>
+</div>
+
+<form [formGroup]="addMarqueForm" (ngSubmit)="addingMarque()">
+  <div id="nomForm">
+    <label for="nomMarque">Nom :</label>
+    <input type="text" id="nomMarque" formControlName="nomMarque" placeholder="Nom de la marque">
+  </div>
+
+  <div id="nomError" class="errorsForm" *ngIf="nomMarque.invalid && (nomMarque.touched || nomMarque.dirty)">
+    <div *ngIf="nomMarque.errors?.required">
+      Le nom de la moto est requis
+    </div>
+  </div>
+
+  <div id="descForm">
+    <label for="descMarque">Description :</label>
+    <textarea id="descMarque" formControlName="descriptionMarque" placeholder="Description de la marque" rows="10"></textarea>
+  </div>
+
+  <div id="descError" class="errorsForm" *ngIf="descriptionMarque.invalid && (descriptionMarque.touched || descriptionMarque.dirty)">
+    <div *ngIf="descriptionMarque.errors?.required">
+      La description de la marque est requise
+    </div>
+  </div>
+
+  <div id="dateForm">
+    <label for="dateMarque">Date de création : </label>
+    <input type="date" id="dateMarque" formControlName="dateMarque">
+  </div>
+
+  <div id="dateError" class="errorsForm" *ngIf="dateMarque.invalid && (dateMarque.touched || dateMarque.dirty)">
+    <div *ngIf="dateMarque.errors?.required">
+      La date de la marque est requise
+    </div>
+  </div>
+
+  <div id="logoForm">
+    <label for="logoMarque">Logo : </label>
+    <input type="text" id="logoMarque" formControlName="logoMarque" placeholder="Logo de la marque">
+  </div>
+
+  <div id="logoError" class="errorsForm" *ngIf="logoMarque.invalid && (logoMarque.touched || logoMarque.dirty)">
+    <div *ngIf="logoMarque.errors?.required">
+      Le logo de la marque est requis
+    </div>
+    <div *ngIf="logoMarque.errors?.format">
+      Le format du logo n'est pas valide ! Formats valides : png, jpg, jpeg, bmp
+    </div>
+  </div>
+
+  <div id="btnForm">
+    <button type="submit" [disabled]="!addMarqueForm.valid">
+      Ajouter la marque
+    </button>
+  </div>
+</form>
