@@ -1,1 +1,32 @@
-<p>marque works!</p>
+<div id="containerMarque">
+  <div id="entete">
+    <span id="titre">{{marque?.nomMarque}}</span>
+
+    <div id="imgBackground">
+      <figure>
+        <img [src]="backgroundIMG" alt="{{marque?.nomMarque}} background">
+      </figure>
+    </div>
+  </div>
+
+  <div id="navTabMarque">
+    <a class="tab" (click)="tabSelector = 'description'; changeContent();" [ngClass]="{activeTab : tabSelector === 'description'}">
+      <fa-icon [icon]="faDesc"></fa-icon>
+      Description
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'infos'; changeContent();" [ngClass]="{activeTab : tabSelector === 'infos'}">
+      <fa-icon [icon]="faInfo"></fa-icon>
+      Infos
+    </a>
+
+    <a class="tab" (click)="tabSelector = 'motos'; changeContent();" [ngClass]="{activeTab : tabSelector === 'motos'}">
+      <fa-icon [icon]="faMoto"></fa-icon>
+      Motos
+    </a>
+  </div>
+
+  <div id="contentTabMarque">
+    <ng-template #contentTabMarque></ng-template>
+  </div>
+</div>
