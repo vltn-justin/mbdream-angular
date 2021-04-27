@@ -1,1 +1,40 @@
-<p>motos-marque works!</p>
+<ng-container *ngIf="marque.motos?.length > 0 else noMoto">
+  <p *ngIf="marque.motos.length === 1" class="countMoto">{{marque.motos.length}} moto</p>
+  <p *ngIf="marque.motos.length > 1" class="countMoto">{{marque.motos.length}} motos</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Moto
+        </th>
+
+        <th>
+          Categorie
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let moto of marque.motos">
+        <tr>
+          <td>
+            <a routerLink="/motos/{{moto.slugMoto}}">
+              {{moto.nomMoto}}
+            </a>
+          </td>
+
+          <td>
+            <a routerLink="/categories/{{moto.categorie.slugCategorie}}">
+              {{moto.categorie.nomCategorie}}
+            </a>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noMoto>
+  <p>Cette marque n'a pas de moto</p>
+</ng-template>

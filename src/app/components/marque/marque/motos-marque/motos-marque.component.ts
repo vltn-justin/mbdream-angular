@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MarqueService} from '../../../../services/marque.service';
+import {MarqueModel} from '../../../../models/marque-model';
+import {faEye} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-motos-marque',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MotosMarqueComponent implements OnInit {
 
-  constructor() { }
+  marque: MarqueModel;
+
+  faSee = faEye;
+
+  constructor(private marqueService: MarqueService) {
+  }
 
   ngOnInit(): void {
+    this.marque = this.marqueService.getSavedMarque();
   }
 
 }
