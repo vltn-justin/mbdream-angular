@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MarqueModel} from '../models/marque-model';
 import {environment} from '../../environments/environment';
+import {MotoModel} from '../models/moto-model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,18 @@ export class MarqueService {
   }
 
   /**
-   * Method to get all marques
+   * Method to get all marques limited by 10
+   * @param page Page number
    */
-  getAllMarques(page: number): Observable<MarqueModel[]> {
+  getAllMarquesPage(page: number): Observable<MarqueModel[]> {
     return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get/page/' + page);
+  }
+
+  /**
+   * Method to get all marques (used for form)
+   */
+  getAllMarques(): Observable<MarqueModel[]> {
+    return this.http.get<MarqueModel[]>(environment.apiBaseUrl + '/marque/get');
   }
 
   /**

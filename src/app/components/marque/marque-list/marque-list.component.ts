@@ -15,7 +15,7 @@ export class MarqueListComponent implements OnInit {
   constructor(private marqueService: MarqueService) { }
 
   ngOnInit(): void {
-    this.marqueService.getAllMarques(this.pageNumber).subscribe(res => {
+    this.marqueService.getAllMarquesPage(this.pageNumber).subscribe(res => {
       this.marqueList = res;
     });
   }
