@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'marques/add', component: MarqueAddComponent},
   {path: 'marques/:slug', component: MarqueComponent},
   {path: 'categories', component: CategorieComponent},
+  {path: 'categories/:slug', component: CategorieComponent},
   {path: '404', component: FourOhFourComponent},
   {path: '**', redirectTo: '/404'} // Toujours en dernier !
 ];

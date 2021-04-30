@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategorieService} from '../../services/categorie.service';
 import {CategorieModel} from '../../models/categorie-model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-categorie',
@@ -13,13 +14,20 @@ export class CategorieComponent implements OnInit {
   allCategorie: CategorieModel[];
   selectedCate: string;
 
-  constructor(private categoryService: CategorieService) { }
+  constructor(private categoryService: CategorieService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    // Path Variable; Slug
+    this.selectedCate = this.route.snapshot.params.slug;
+
     this.categoryService.getAllCategories().subscribe(res => {
       this.allCategorie = res;
-      // Permet d'afficher la 1ere catégorie par defaut
-      this.selectedCate = this.allCategorie[0].slugCategorie;
+
+      if (this.selectedCate === undefined) {
+        // Permet d'afficher la 1ere catégorie par defaut
+        this.selectedCate = this.allCategorie[0].slugCategorie;
+      }
       this.changeCate();
     });
   }
