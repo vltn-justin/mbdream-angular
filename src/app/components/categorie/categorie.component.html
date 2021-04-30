@@ -6,8 +6,38 @@
 </div>
 
 <div id="displayInfo">
-  <ng-container *ngIf="categorie !== undefined else noMoto">
-    {{categorie.motos.length}}
+  <ng-container *ngIf="categorie !== undefined && categorie.motos.length > 0 else noMoto">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          Moto
+        </th>
+
+        <th>
+          Marque
+        </th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <ng-container *ngFor="let moto of categorie.motos">
+        <tr>
+          <td>
+            <a routerLink="/motos/{{moto.slugMoto}}">
+              {{moto.nomMoto}}
+            </a>
+          </td>
+
+          <td>
+            <a routerLink="/marques/{{moto.marque.slugMarque}}">
+              {{moto.marque.nomMarque}}
+            </a>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
   </ng-container>
 
   <ng-template #noMoto>
