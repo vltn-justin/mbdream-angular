@@ -2,9 +2,8 @@ import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, Vi
 import {MarqueService} from '../../../services/marque.service';
 import {MarqueModel} from '../../../models/marque-model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {faAlignLeft, faInfo, faMotorcycle} from '@fortawesome/free-solid-svg-icons';
+import {faAlignLeft, faMotorcycle} from '@fortawesome/free-solid-svg-icons';
 import {DescriptionMarqueComponent} from './description-marque/description-marque.component';
-import {InfosMarqueComponent} from './infos-marque/infos-marque.component';
 import {MotosMarqueComponent} from './motos-marque/motos-marque.component';
 
 @Component({
@@ -15,7 +14,6 @@ import {MotosMarqueComponent} from './motos-marque/motos-marque.component';
 export class MarqueComponent implements OnInit {
 
   faDesc = faAlignLeft;
-  faInfo = faInfo;
   faMoto = faMotorcycle;
 
   marque: MarqueModel;
@@ -29,7 +27,6 @@ export class MarqueComponent implements OnInit {
   private componentRef: ComponentRef<{}>;
   private componentsMapping = {
     description: DescriptionMarqueComponent,
-    infos: InfosMarqueComponent,
     motos: MotosMarqueComponent,
   };
 

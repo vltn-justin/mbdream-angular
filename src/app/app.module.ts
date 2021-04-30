@@ -23,7 +23,6 @@ import {MarqueListComponent} from './components/marque/marque-list/marque-list.c
 import {MarqueComponent} from './components/marque/marque/marque.component';
 import {MarqueAddComponent} from './components/marque/marque-add/marque-add.component';
 import {DescriptionMarqueComponent} from './components/marque/marque/description-marque/description-marque.component';
-import {InfosMarqueComponent} from './components/marque/marque/infos-marque/infos-marque.component';
 import {MotosMarqueComponent} from './components/marque/marque/motos-marque/motos-marque.component';
 
 @NgModule({
@@ -45,7 +44,6 @@ import {MotosMarqueComponent} from './components/marque/marque/motos-marque/moto
     MarqueComponent,
     MarqueAddComponent,
     DescriptionMarqueComponent,
-    InfosMarqueComponent,
     MotosMarqueComponent,
   ],
   imports: [
