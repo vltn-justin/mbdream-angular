@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MarqueService} from '../../../../services/marque.service';
 import {MarqueModel} from '../../../../models/marque-model';
-import {faEye} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-motos-marque',
@@ -11,8 +10,6 @@ import {faEye} from '@fortawesome/free-solid-svg-icons';
 export class MotosMarqueComponent implements OnInit {
 
   marque: MarqueModel;
-
-  faSee = faEye;
 
   constructor(private marqueService: MarqueService) {
   }
