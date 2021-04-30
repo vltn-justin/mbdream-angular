@@ -1,1 +1,36 @@
-<p>description-marque works!</p>
+<div id="btnAddUpdateDesc">
+  <button type="button" (click)="setEditorDesc()">
+    <ng-container *ngIf="marque.descriptionMarque !== undefined else addInfos">Mettre à jour la description</ng-container>
+    <ng-template #addInfos>Ajouter une description</ng-template>
+  </button>
+</div>
+
+<div class="msgFrom" id="errorMsgDesc" *ngIf="errorMsg">
+  <p>{{errorMsg}}</p>
+</div>
+
+<div class="msgFrom" id="successMsgDesc" *ngIf="successMsg">
+  <p>
+    {{successMsg}}
+  </p>
+</div>
+
+<ng-container *ngIf="marque.descriptionMarque || onEdit else noDescription">
+  <ng-container *ngIf="onEdit else description">
+    <form [formGroup]="descriptionForm" (ngSubmit)="saveDesc()">
+      <quill-editor formControlName="descriptionMoto" class="content-editor" [styles]="{'min-height':'225px'}"></quill-editor>
+
+      <div id="btnDesc">
+        <button type="submit" [disabled]="!descriptionForm.valid">Sauvegarder</button>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-template #description>
+    <quill-view [content]="marque.descriptionMarque" format="html" theme="snow"></quill-view>
+  </ng-template>
+</ng-container>
+
+<ng-template #noDescription>
+  Pas de description pour cette marque
+</ng-template>
