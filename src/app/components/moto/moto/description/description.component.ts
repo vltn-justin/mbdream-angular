@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MotoForm, MotoModel} from '../../../../models/moto-model';
 import {MotoService} from '../../../../services/moto.service';
 import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
