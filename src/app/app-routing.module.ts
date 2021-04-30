@@ -8,6 +8,7 @@ import {MotoAddComponent} from './components/moto/moto-add/moto-add.component';
 import {MarqueComponent} from './components/marque/marque/marque.component';
 import {MarqueListComponent} from './components/marque/marque-list/marque-list.component';
 import {MarqueAddComponent} from './components/marque/marque-add/marque-add.component';
+import {CategorieComponent} from './components/categorie/categorie.component';
 
 const routes: Routes = [
   {path: '', component: AccueilComponent, pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'marques', component: MarqueListComponent},
   {path: 'marques/add', component: MarqueAddComponent},
   {path: 'marques/:slug', component: MarqueComponent},
+  {path: 'categories', component: CategorieComponent},
   {path: '404', component: FourOhFourComponent},
   {path: '**', redirectTo: '/404'} // Toujours en dernier !
 ];

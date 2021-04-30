@@ -24,6 +24,7 @@ import {MarqueComponent} from './components/marque/marque/marque.component';
 import {MarqueAddComponent} from './components/marque/marque-add/marque-add.component';
 import {DescriptionMarqueComponent} from './components/marque/marque/description-marque/description-marque.component';
 import {MotosMarqueComponent} from './components/marque/marque/motos-marque/motos-marque.component';
+import { CategorieComponent } from './components/categorie/categorie.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {MotosMarqueComponent} from './components/marque/marque/motos-marque/moto
     MarqueAddComponent,
     DescriptionMarqueComponent,
     MotosMarqueComponent,
+    CategorieComponent,
   ],
   imports: [
     BrowserModule,
