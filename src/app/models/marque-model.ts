@@ -2,7 +2,7 @@
 export class MarqueForm {
   constructor(private nomMarque: string,
               private descriptionMarque: string,
-              private dateCreation: string,
+              private dateCreation: Date,
               private logoMarque: string,
               private slugMarque?: string) {
   }
