@@ -18,6 +18,9 @@
 <ng-container *ngIf="marque.descriptionMarque || onEdit else noDescription">
   <ng-container *ngIf="onEdit else description">
     <form [formGroup]="descriptionForm" (ngSubmit)="saveDesc()">
+      <label for="dateCreation">Date de création : </label>
+      <input type="date" name="dateCreation" id="dateCreation" formControlName="dateCreation">
+
       <quill-editor formControlName="descriptionMoto" class="content-editor" [styles]="{'min-height':'225px'}"></quill-editor>
 
       <div id="btnDesc">
@@ -27,6 +30,10 @@
   </ng-container>
 
   <ng-template #description>
+    <p>
+      Date de création : {{marque.dateCreation | date:'fullDate' }}
+    </p>
+
     <quill-view [content]="marque.descriptionMarque" format="html" theme="snow"></quill-view>
   </ng-template>
 </ng-container>

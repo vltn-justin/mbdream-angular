@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MarqueModel} from '../../../../models/marque-model';
+import {MarqueForm, MarqueModel} from '../../../../models/marque-model';
 import {MarqueService} from '../../../../services/marque.service';
 import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
 
@@ -20,9 +20,10 @@ export class DescriptionMarqueComponent implements OnInit {
 
   descriptionForm = this.formBuilder.group({
     descriptionMoto: new FormControl('', [Validators.required]),
+    dateCreation: new FormControl('', [Validators.required])
   });
 
-  constructor(private marqueService: MarqueService, private formBuilder: FormBuilder,) { }
+  constructor(private marqueService: MarqueService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.marque = this.marqueService.getSavedMarque();
@@ -36,6 +37,7 @@ export class DescriptionMarqueComponent implements OnInit {
 
     if (this.firstEdit) {
       this.descriptionMoto.setValue(this.marque.descriptionMarque);
+      this.dateCreation.setValue(this.marque.dateCreation);
       this.firstEdit = false;
     }
   }
@@ -44,8 +46,21 @@ export class DescriptionMarqueComponent implements OnInit {
    * Save new desc
    */
   saveDesc(): void {
+    const updatedMarque = new MarqueForm(
+      this.marque.nomMarque,
+      this.descriptionMoto.value,
+      this.dateCreation.value,
+      this.marque.logoMarque,
+      this.marque.slugMarque
+    );
 
+    this.marqueService.updateMarque(updatedMarque).subscribe(res => {
+      this.successMsg = res;
+    }, err => {
+      this.errorMsg = err;
+    });
   }
 
   get descriptionMoto(): AbstractControl { return this.descriptionForm.get('descriptionMoto'); }
+  get dateCreation(): AbstractControl { return this.descriptionForm.get('dateCreation'); }
 }
