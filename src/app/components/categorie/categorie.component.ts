@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CategorieService} from '../../services/categorie.service';
+import {CategorieModel} from '../../models/categorie-model';
 
 @Component({
   selector: 'app-categorie',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategorieComponent implements OnInit {
 
-  constructor() { }
+  categorie: CategorieModel;
+  allCategorie: CategorieModel[];
+  selectedCate: string;
+
+  constructor(private categoryService: CategorieService) { }
 
   ngOnInit(): void {
+    this.categoryService.getAllCategories().subscribe(res => {
+      this.allCategorie = res;
+    });
   }
 
+  changeCate(): void {
+    this.categoryService.getCategorie(this.selectedCate).subscribe(res => {
+      this.categorie = res;
+    });
+  }
 }
