@@ -48,6 +48,16 @@ export class MarqueService {
   }
 
   /**
+   * Method to update marque
+   * @param updatedMarque Updated marque
+   */
+  updateMarque(updatedMarque: MarqueForm): Observable<string> {
+    return this.http.post(environment.apiBaseUrl + '/marque/update', updatedMarque, {
+      responseType: 'text'
+    });
+  }
+
+  /**
    * Method to get the count of all Marque
    */
   countAllMarque(): Observable<number> {
