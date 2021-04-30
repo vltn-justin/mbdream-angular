@@ -18,6 +18,9 @@ export class CategorieComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(res => {
       this.allCategorie = res;
+      // Permet d'afficher la 1ere catégorie par defaut
+      this.selectedCate = this.allCategorie[0].slugCategorie;
+      this.changeCate();
     });
   }
 

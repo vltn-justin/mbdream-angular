@@ -7,6 +7,10 @@
 
 <div id="displayInfo">
   <ng-container *ngIf="categorie !== undefined && categorie.motos.length > 0 else noMoto">
+
+    <p *ngIf="categorie.motos.length === 1" class="countMoto">{{categorie.motos.length}} moto</p>
+    <p *ngIf="categorie.motos.length > 1" class="countMoto">{{categorie.motos.length}} motos</p>
+
     <table>
       <thead>
       <tr>
