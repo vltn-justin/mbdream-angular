@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MotoForm, MotoModel} from '../models/moto-model';
 import {environment} from '../../environments/environment';
+import {MotoList} from '../models/moto-list';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,14 @@ export class MotoService {
    * @param slug Slug of moto
    */
   getOneMoto(slug: string): Observable<MotoModel> {
-    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get/' + slug);
+    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get?slug=' + slug);
   }
 
   /**
    * Method to get all moto
    */
-  getAllMoto(page: number): Observable<MotoModel[]> {
-    return this.http.get<MotoModel[]>(environment.apiBaseUrl + '/moto/get/page/' + page);
+  getAllMoto(page: number): Observable<MotoList> {
+    return this.http.get<MotoList>(environment.apiBaseUrl + '/moto/get?page=' + page);
   }
 
   /**

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MotoService} from '../../../services/moto.service';
 import {MotoModel} from '../../../models/moto-model';
+import {MotoList} from '../../../models/moto-list';
 
 @Component({
   selector: 'app-moto-list',
@@ -9,7 +10,7 @@ import {MotoModel} from '../../../models/moto-model';
 })
 export class MotoListComponent implements OnInit {
 
-  motoList: MotoModel[];
+  motoList: MotoList;
   pageNumber = 0;
 
   constructor(private service: MotoService) { }
