@@ -20,14 +20,14 @@ export class MotoService {
    * @param slug Slug of moto
    */
   getOneMoto(slug: string): Observable<MotoModel> {
-    return this.http.get<MotoModel>(environment.apiBaseUrl + '/moto/get?slug=' + slug);
+    return this.http.get<MotoModel>(environment.apiBaseUrl + '/motos/' + slug);
   }
 
   /**
    * Method to get all moto
    */
   getAllMoto(page: number): Observable<MotoList> {
-    return this.http.get<MotoList>(environment.apiBaseUrl + '/moto/get?page=' + page);
+    return this.http.get<MotoList>(environment.apiBaseUrl + '/motos?page=' + page);
   }
 
   /**
@@ -35,17 +35,18 @@ export class MotoService {
    * @param newMoto MotoForm, with all data for new moto
    */
   addMoto(newMoto: MotoForm): Observable<string> {
-    return this.http.post(environment.apiBaseUrl + '/moto/add', newMoto, {
+    return this.http.post(environment.apiBaseUrl + '/motos/', newMoto, {
       responseType: 'text'
     });
   }
 
   /**
    * Method to update a moto
+   * @param slugMoto Slug of moto
    * @param newMoto Moto with new data
    */
-  updateMoto(newMoto: MotoForm): Observable<string> {
-    return this.http.post(environment.apiBaseUrl + '/moto/update', newMoto, {
+  updateMoto(slugMoto: string, newMoto: MotoForm): Observable<string> {
+    return this.http.put(environment.apiBaseUrl + '/motos/' + slugMoto, newMoto, {
       responseType: 'text',
     });
   }
@@ -54,7 +55,7 @@ export class MotoService {
    * Method to get the count of all Moto
    */
   countAllMoto(): Observable<number> {
-    return this.http.get<number>(environment.apiBaseUrl + '/moto/count');
+    return this.http.get<number>(environment.apiBaseUrl + '/motos/count');
   }
 
   /**

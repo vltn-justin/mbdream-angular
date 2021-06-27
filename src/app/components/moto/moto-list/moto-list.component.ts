@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {MotoService} from '../../../services/moto.service';
-import {MotoModel} from '../../../models/moto-model';
 import {MotoList} from '../../../models/moto-list';
 
 @Component({

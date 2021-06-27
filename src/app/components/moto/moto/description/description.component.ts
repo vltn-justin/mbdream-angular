@@ -75,7 +75,7 @@ export class DescriptionComponent implements OnInit {
       this.slugCategorie.value,
       this.moto.slugMoto);
 
-    this.motoService.updateMoto(updatedMoto).subscribe(res => {
+    this.motoService.updateMoto(this.moto.slugMoto, updatedMoto).subscribe(res => {
       this.successMsg = res;
       this.onEdit = false;
     }, error => {
