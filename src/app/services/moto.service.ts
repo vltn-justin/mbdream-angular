@@ -26,8 +26,9 @@ export class MotoService {
   /**
    * Method to get all moto
    */
-  getAllMoto(page: number): Observable<MotoList> {
-    return this.http.get<MotoList>(environment.apiBaseUrl + '/motos?page=' + page);
+  getAllMoto(page?: number): Observable<MotoModel[]> {
+    const restUrl = page !== undefined ? environment.apiBaseUrl + '/motos?page=' + page : environment.apiBaseUrl + '/motos';
+    return this.http.get<MotoModel[]>(restUrl);
   }
 
   /**

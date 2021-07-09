@@ -78,8 +78,8 @@ export class MotoComponent implements OnInit {
    * Method to set background img
    */
   loadImg(): void {
-    if (this.moto.backgroundImgMoto !== null) {
-      this.backgroundIMG = this.moto.backgroundImgMoto;
+    if (this.moto.backgroundImage !== null) {
+      this.backgroundIMG = this.moto.backgroundImage;
     }
   }
 

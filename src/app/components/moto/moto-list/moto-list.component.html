@@ -4,10 +4,10 @@
   </a>
 </div>
 
-<div id="listMoto" *ngIf="motoList?.results?.length > 0 else noMoto">
-  <div id="oneMoto" *ngFor="let moto of motoList.results">
+<div id="listMoto" *ngIf="motoList?.length > 0 else noMoto">
+  <div id="oneMoto" *ngFor="let moto of motoList">
     <figure>
-      <img *ngIf="moto.backgroundImgMoto !== null" src="{{moto.backgroundImgMoto}}" alt="{{moto.nomMoto}}">
+      <img *ngIf="moto.backgroundImage !== null" src="{{moto.backgroundImage}}" alt="{{moto.nomMoto}}">
     </figure>
 
     <p>{{moto.nomMoto}}</p>
